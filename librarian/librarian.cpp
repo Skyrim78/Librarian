@@ -5,6 +5,8 @@
 #include "publish.h"
 #include "authors.h"
 #include "books.h"
+#include "readers.h"
+#include "docs.h"
 
 librarian::librarian(QWidget *parent) :
     QMainWindow(parent),
@@ -27,6 +29,8 @@ librarian::librarian(QWidget *parent) :
     connect(ui->actionPub, SIGNAL(triggered()), this, SLOT(toPublish()));
     connect(ui->actionAuth, SIGNAL(triggered()), this, SLOT(toAuthors()));
     connect(ui->actionBooks, SIGNAL(triggered()), this, SLOT(toBooks()));
+    connect(ui->actionReaders, SIGNAL(triggered()), this, SLOT(toReaders()));
+    connect(ui->action_doc_in, SIGNAL(triggered()), this, SLOT(toDocsIn()));
 }
 
 librarian::~librarian()
@@ -151,4 +155,14 @@ void librarian::toAuthors(){
 void librarian::toBooks(){
     books *_b = new books(this);
     _b->show();
+}
+
+void librarian::toReaders(){
+    readers *_r = new readers(this);
+    _r->show();
+}
+
+void librarian::toDocsIn(){
+    docs *doc_in = new docs(1, this);
+    doc_in->show();
 }

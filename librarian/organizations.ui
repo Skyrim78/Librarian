@@ -10,6 +10,11 @@
     <height>612</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <pointsize>10</pointsize>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Организации</string>
   </property>
@@ -33,8 +38,8 @@
         </property>
         <property name="font">
          <font>
-          <family>Calibri</family>
-          <pointsize>11</pointsize>
+          <family>Ubuntu</family>
+          <pointsize>10</pointsize>
          </font>
         </property>
         <property name="title">
@@ -120,8 +125,8 @@
            <widget class="QGroupBox" name="groupBox_card">
             <property name="font">
              <font>
-              <family>Calibri</family>
-              <pointsize>11</pointsize>
+              <family>Ubuntu</family>
+              <pointsize>10</pointsize>
              </font>
             </property>
             <property name="title">
@@ -333,8 +338,8 @@
                    </property>
                    <property name="font">
                     <font>
-                     <family>Calibri</family>
-                     <pointsize>11</pointsize>
+                     <family>Ubuntu</family>
+                     <pointsize>10</pointsize>
                     </font>
                    </property>
                    <property name="styleSheet">
@@ -404,8 +409,8 @@
          <widget class="QTableWidget" name="tableWidget_org">
           <property name="font">
            <font>
-            <family>Calibri</family>
-            <pointsize>11</pointsize>
+            <family>Ubuntu</family>
+            <pointsize>10</pointsize>
            </font>
           </property>
           <property name="styleSheet">
@@ -440,10 +445,10 @@
            </property>
            <property name="font">
             <font>
-             <family>Calibri</family>
-             <pointsize>11</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>Ubuntu</family>
+             <pointsize>10</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
           </column>
@@ -453,10 +458,10 @@
            </property>
            <property name="font">
             <font>
-             <family>Calibri</family>
-             <pointsize>11</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>Ubuntu</family>
+             <pointsize>10</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
           </column>
@@ -466,23 +471,23 @@
            </property>
            <property name="font">
             <font>
-             <family>Calibri</family>
-             <pointsize>11</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>Ubuntu</family>
+             <pointsize>10</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
           </column>
           <column>
            <property name="text">
-            <string>e-mail</string>
+            <string>E-mail</string>
            </property>
            <property name="font">
             <font>
-             <family>Calibri</family>
-             <pointsize>11</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>Ubuntu</family>
+             <pointsize>10</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
           </column>
@@ -492,10 +497,10 @@
            </property>
            <property name="font">
             <font>
-             <family>Calibri</family>
-             <pointsize>11</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>Ubuntu</family>
+             <pointsize>10</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
           </column>
@@ -505,10 +510,10 @@
            </property>
            <property name="font">
             <font>
-             <family>Calibri</family>
-             <pointsize>11</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>Ubuntu</family>
+             <pointsize>10</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
           </column>
@@ -524,8 +529,8 @@
   <widget class="QToolBar" name="toolBar">
    <property name="font">
     <font>
-     <family>Calibri</family>
-     <pointsize>11</pointsize>
+     <family>Ubuntu</family>
+     <pointsize>10</pointsize>
     </font>
    </property>
    <property name="windowTitle">

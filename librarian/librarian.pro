@@ -17,7 +17,11 @@ SOURCES += main.cpp\
     publish.cpp \
     authors.cpp \
     books.cpp \
-    bookCard.cpp
+    bookCard.cpp \
+    readers.cpp \
+    readerCard.cpp \
+    readerBook.cpp \
+    docs.cpp
 
 HEADERS  += librarian.h \
     organizations.h \
@@ -25,7 +29,11 @@ HEADERS  += librarian.h \
     publish.h \
     authors.h \
     books.h \
-    bookCard.h
+    bookCard.h \
+    readers.h \
+    readerCard.h \
+    readerBook.h \
+    docs.h
 
 FORMS    += librarian.ui \
     organizations.ui \
@@ -33,4 +41,8 @@ FORMS    += librarian.ui \
     publish.ui \
     authors.ui \
     books.ui \
-    bookCard.ui
+    bookCard.ui \
+    readers.ui \
+    readerCard.ui \
+    readerBook.ui \
+    docs.ui

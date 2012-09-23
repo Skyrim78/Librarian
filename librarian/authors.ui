@@ -12,8 +12,7 @@
   </property>
   <property name="font">
    <font>
-    <family>Calibri</family>
-    <pointsize>11</pointsize>
+    <pointsize>10</pointsize>
    </font>
   </property>
   <property name="windowTitle">
@@ -138,14 +137,14 @@
                   <widget class="QPushButton" name="pushButton_del">
                    <property name="minimumSize">
                     <size>
-                     <width>100</width>
-                     <height>30</height>
+                     <width>120</width>
+                     <height>40</height>
                     </size>
                    </property>
                    <property name="maximumSize">
                     <size>
-                     <width>100</width>
-                     <height>30</height>
+                     <width>120</width>
+                     <height>40</height>
                     </size>
                    </property>
                    <property name="text">
@@ -170,14 +169,14 @@
                   <widget class="QPushButton" name="pushButton_save">
                    <property name="minimumSize">
                     <size>
-                     <width>100</width>
-                     <height>30</height>
+                     <width>120</width>
+                     <height>40</height>
                     </size>
                    </property>
                    <property name="maximumSize">
                     <size>
-                     <width>100</width>
-                     <height>30</height>
+                     <width>120</width>
+                     <height>40</height>
                     </size>
                    </property>
                    <property name="text">
@@ -189,14 +188,14 @@
                   <widget class="QPushButton" name="pushButton_close">
                    <property name="minimumSize">
                     <size>
-                     <width>100</width>
-                     <height>30</height>
+                     <width>120</width>
+                     <height>40</height>
                     </size>
                    </property>
                    <property name="maximumSize">
                     <size>
-                     <width>100</width>
-                     <height>30</height>
+                     <width>120</width>
+                     <height>40</height>
                     </size>
                    </property>
                    <property name="text">
@@ -212,7 +211,7 @@
               <widget class="QTableWidget" name="tableWidget_book">
                <property name="font">
                 <font>
-                 <family>Calibri</family>
+                 <family>Ubuntu</family>
                  <pointsize>10</pointsize>
                 </font>
                </property>
@@ -235,7 +234,7 @@
                 <bool>true</bool>
                </attribute>
                <attribute name="verticalHeaderDefaultSectionSize">
-                <number>24</number>
+                <number>23</number>
                </attribute>
                <column>
                 <property name="text">
@@ -248,10 +247,10 @@
                 </property>
                 <property name="font">
                  <font>
-                  <family>Calibri</family>
-                  <pointsize>11</pointsize>
-                  <weight>75</weight>
-                  <bold>true</bold>
+                  <family>Ubuntu</family>
+                  <pointsize>10</pointsize>
+                  <weight>50</weight>
+                  <bold>false</bold>
                  </font>
                 </property>
                </column>
@@ -261,10 +260,10 @@
                 </property>
                 <property name="font">
                  <font>
-                  <family>Calibri</family>
-                  <pointsize>11</pointsize>
-                  <weight>75</weight>
-                  <bold>true</bold>
+                  <family>Ubuntu</family>
+                  <pointsize>10</pointsize>
+                  <weight>50</weight>
+                  <bold>false</bold>
                  </font>
                 </property>
                </column>
@@ -274,10 +273,7 @@
                 </property>
                 <property name="font">
                  <font>
-                  <family>Calibri</family>
-                  <pointsize>11</pointsize>
-                  <weight>75</weight>
-                  <bold>true</bold>
+                  <pointsize>10</pointsize>
                  </font>
                 </property>
                </column>
@@ -287,10 +283,7 @@
                 </property>
                 <property name="font">
                  <font>
-                  <family>Calibri</family>
-                  <pointsize>11</pointsize>
-                  <weight>75</weight>
-                  <bold>true</bold>
+                  <pointsize>10</pointsize>
                  </font>
                 </property>
                </column>
@@ -318,12 +311,6 @@
       </item>
       <item>
        <widget class="QTableWidget" name="tableWidget_authors">
-        <property name="font">
-         <font>
-          <family>Calibri</family>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
         <property name="editTriggers">
          <set>QAbstractItemView::NoEditTriggers</set>
         </property>
@@ -343,7 +330,7 @@
          <bool>true</bool>
         </attribute>
         <attribute name="verticalHeaderDefaultSectionSize">
-         <number>27</number>
+         <number>23</number>
         </attribute>
         <column>
          <property name="text">
@@ -356,10 +343,7 @@
          </property>
          <property name="font">
           <font>
-           <family>Calibri</family>
-           <pointsize>11</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
+           <pointsize>10</pointsize>
           </font>
          </property>
         </column>
@@ -369,10 +353,7 @@
          </property>
          <property name="font">
           <font>
-           <family>Calibri</family>
-           <pointsize>11</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
+           <pointsize>10</pointsize>
           </font>
          </property>
         </column>
@@ -382,10 +363,7 @@
          </property>
          <property name="font">
           <font>
-           <family>Calibri</family>
-           <pointsize>11</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
+           <pointsize>10</pointsize>
           </font>
          </property>
         </column>
@@ -399,8 +377,8 @@
   <widget class="QToolBar" name="toolBar">
    <property name="font">
     <font>
-     <family>Calibri</family>
-     <pointsize>11</pointsize>
+     <family>Ubuntu</family>
+     <pointsize>10</pointsize>
     </font>
    </property>
    <property name="windowTitle">

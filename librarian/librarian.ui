@@ -12,8 +12,8 @@
   </property>
   <property name="font">
    <font>
-    <family>Calibri</family>
-    <pointsize>11</pointsize>
+    <family>Ubuntu</family>
+    <pointsize>10</pointsize>
    </font>
   </property>
   <property name="windowTitle">
@@ -26,20 +26,20 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>25</height>
+     <height>22</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Calibri</family>
-     <pointsize>11</pointsize>
+     <family>Ubuntu</family>
+     <pointsize>10</pointsize>
     </font>
    </property>
    <widget class="QMenu" name="menu">
     <property name="font">
      <font>
-      <family>Calibri</family>
-      <pointsize>11</pointsize>
+      <family>Ubuntu</family>
+      <pointsize>10</pointsize>
      </font>
     </property>
     <property name="title">
@@ -50,21 +50,32 @@
    <widget class="QMenu" name="menu_2">
     <property name="font">
      <font>
-      <family>Calibri</family>
-      <pointsize>11</pointsize>
+      <family>Ubuntu</family>
+      <pointsize>10</pointsize>
      </font>
     </property>
     <property name="title">
-     <string>Справочник</string>
+     <string>Справочники</string>
     </property>
     <addaction name="actionOrganizations"/>
     <addaction name="actionSectCat"/>
     <addaction name="actionPub"/>
     <addaction name="actionAuth"/>
     <addaction name="actionBooks"/>
+    <addaction name="actionReaders"/>
+   </widget>
+   <widget class="QMenu" name="menu_3">
+    <property name="title">
+     <string>Библиотека</string>
+    </property>
+    <addaction name="action_biblio"/>
+    <addaction name="separator"/>
+    <addaction name="action_doc_in"/>
+    <addaction name="action_doc_out"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_2"/>
+   <addaction name="menu_3"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -268,14 +279,19 @@
    </property>
    <property name="font">
     <font>
-     <family>Calibri</family>
-     <pointsize>11</pointsize>
+     <family>Ubuntu</family>
+     <pointsize>10</pointsize>
     </font>
    </property>
   </action>
   <action name="actionOrganizations">
    <property name="text">
     <string>Организации</string>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </action>
   <action name="actionSectCat">
@@ -296,6 +312,31 @@
   <action name="actionBooks">
    <property name="text">
     <string>Книги</string>
+   </property>
+  </action>
+  <action name="actionReaders">
+   <property name="text">
+    <string>Читатели</string>
+   </property>
+  </action>
+  <action name="action_biblio">
+   <property name="text">
+    <string>Выдача / Прием книг</string>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+  </action>
+  <action name="action_doc_in">
+   <property name="text">
+    <string>Приходные документы</string>
+   </property>
+  </action>
+  <action name="action_doc_out">
+   <property name="text">
+    <string>Расходные документы</string>
    </property>
   </action>
  </widget>

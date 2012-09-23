@@ -136,7 +136,7 @@ void auth::editAuth(){
     while (_b.next()){
         ui.tableWidget_book->insertRow(row);
         for (int col = 0; col < 5; col++){
-            QTableWidgetItem *item = new QTableWidgetItem(_b.value(0).toString());
+            QTableWidgetItem *item = new QTableWidgetItem(_b.value(col).toString());
             ui.tableWidget_book->setItem(row, col, item);
         }
         row++;

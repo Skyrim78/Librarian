@@ -37,6 +37,10 @@ public slots:
     void toPublish();
     void toAuthors();
     void toBooks();
+    void toReaders();
+    //---------------
+    void toDocsIn();
+
 };
 
 #endif // LIBRARIAN_H

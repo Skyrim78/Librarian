@@ -12,8 +12,8 @@
   </property>
   <property name="font">
    <font>
-    <family>Calibri</family>
-    <pointsize>11</pointsize>
+    <family>Ubuntu</family>
+    <pointsize>10</pointsize>
    </font>
   </property>
   <property name="windowTitle">
@@ -157,6 +157,9 @@
             <property name="checkable">
              <bool>true</bool>
             </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
             <property name="arrowType">
              <enum>Qt::LeftArrow</enum>
             </property>
@@ -198,7 +201,7 @@
            <bool>false</bool>
           </attribute>
           <attribute name="verticalHeaderDefaultSectionSize">
-           <number>27</number>
+           <number>23</number>
           </attribute>
           <column>
            <property name="text">

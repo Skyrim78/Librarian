@@ -12,8 +12,8 @@
   </property>
   <property name="font">
    <font>
-    <family>Calibri</family>
-    <pointsize>11</pointsize>
+    <family>Ubuntu</family>
+    <pointsize>10</pointsize>
    </font>
   </property>
   <property name="windowTitle">
@@ -126,14 +126,14 @@
                 <widget class="QPushButton" name="pushButton_del">
                  <property name="minimumSize">
                   <size>
-                   <width>100</width>
-                   <height>30</height>
+                   <width>120</width>
+                   <height>40</height>
                   </size>
                  </property>
                  <property name="maximumSize">
                   <size>
-                   <width>100</width>
-                   <height>30</height>
+                   <width>120</width>
+                   <height>40</height>
                   </size>
                  </property>
                  <property name="text">
@@ -158,14 +158,14 @@
                 <widget class="QPushButton" name="pushButton_save">
                  <property name="minimumSize">
                   <size>
-                   <width>100</width>
-                   <height>30</height>
+                   <width>120</width>
+                   <height>40</height>
                   </size>
                  </property>
                  <property name="maximumSize">
                   <size>
-                   <width>100</width>
-                   <height>30</height>
+                   <width>120</width>
+                   <height>40</height>
                   </size>
                  </property>
                  <property name="text">
@@ -177,14 +177,14 @@
                 <widget class="QPushButton" name="pushButton_close">
                  <property name="minimumSize">
                   <size>
-                   <width>100</width>
-                   <height>30</height>
+                   <width>120</width>
+                   <height>40</height>
                   </size>
                  </property>
                  <property name="maximumSize">
                   <size>
-                   <width>100</width>
-                   <height>30</height>
+                   <width>120</width>
+                   <height>40</height>
                   </size>
                  </property>
                  <property name="text">
@@ -216,6 +216,9 @@
       </item>
       <item row="1" column="0">
        <widget class="QTableWidget" name="tableWidget_pub">
+        <attribute name="verticalHeaderDefaultSectionSize">
+         <number>23</number>
+        </attribute>
         <column>
          <property name="text">
           <string>id</string>
@@ -227,10 +230,10 @@
          </property>
          <property name="font">
           <font>
-           <family>Calibri</family>
-           <pointsize>11</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
+           <family>Ubuntu</family>
+           <pointsize>10</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
           </font>
          </property>
         </column>
@@ -240,10 +243,10 @@
          </property>
          <property name="font">
           <font>
-           <family>Calibri</family>
-           <pointsize>11</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
+           <family>Ubuntu</family>
+           <pointsize>10</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
           </font>
          </property>
         </column>

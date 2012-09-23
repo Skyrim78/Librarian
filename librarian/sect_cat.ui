@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>808</width>
-    <height>668</height>
+    <width>822</width>
+    <height>598</height>
    </rect>
   </property>
   <property name="font">
    <font>
-    <family>Calibri</family>
-    <pointsize>11</pointsize>
+    <family>Ubuntu</family>
+    <pointsize>10</pointsize>
    </font>
   </property>
   <property name="windowTitle">
@@ -45,6 +45,12 @@
             <height>16777215</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <family>Ubuntu</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
           <property name="title">
            <string>Раздел</string>
           </property>
@@ -74,14 +80,14 @@
                 <widget class="QPushButton" name="pushButton_sect_del">
                  <property name="minimumSize">
                   <size>
-                   <width>100</width>
-                   <height>30</height>
+                   <width>120</width>
+                   <height>40</height>
                   </size>
                  </property>
                  <property name="maximumSize">
                   <size>
-                   <width>100</width>
-                   <height>30</height>
+                   <width>120</width>
+                   <height>40</height>
                   </size>
                  </property>
                  <property name="text">
@@ -106,14 +112,14 @@
                 <widget class="QPushButton" name="pushButton_sect_save">
                  <property name="minimumSize">
                   <size>
-                   <width>100</width>
-                   <height>30</height>
+                   <width>120</width>
+                   <height>40</height>
                   </size>
                  </property>
                  <property name="maximumSize">
                   <size>
-                   <width>100</width>
-                   <height>30</height>
+                   <width>120</width>
+                   <height>40</height>
                   </size>
                  </property>
                  <property name="text">
@@ -125,14 +131,14 @@
                 <widget class="QPushButton" name="pushButton_sect_close">
                  <property name="minimumSize">
                   <size>
-                   <width>100</width>
-                   <height>25</height>
+                   <width>120</width>
+                   <height>40</height>
                   </size>
                  </property>
                  <property name="maximumSize">
                   <size>
-                   <width>100</width>
-                   <height>30</height>
+                   <width>120</width>
+                   <height>40</height>
                   </size>
                  </property>
                  <property name="text">
@@ -166,8 +172,8 @@
        <widget class="QTableWidget" name="tableWidget_sect">
         <property name="font">
          <font>
-          <family>Calibri</family>
-          <pointsize>11</pointsize>
+          <family>Ubuntu</family>
+          <pointsize>10</pointsize>
          </font>
         </property>
         <property name="editTriggers">
@@ -189,7 +195,7 @@
          <bool>true</bool>
         </attribute>
         <attribute name="verticalHeaderDefaultSectionSize">
-         <number>27</number>
+         <number>23</number>
         </attribute>
         <column>
          <property name="text">
@@ -202,8 +208,8 @@
          </property>
          <property name="font">
           <font>
-           <family>Calibri</family>
-           <pointsize>11</pointsize>
+           <family>Ubuntu</family>
+           <pointsize>10</pointsize>
           </font>
          </property>
         </column>
@@ -265,14 +271,14 @@
               <widget class="QPushButton" name="pushButton_cat_del">
                <property name="minimumSize">
                 <size>
-                 <width>100</width>
-                 <height>30</height>
+                 <width>120</width>
+                 <height>40</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>100</width>
-                 <height>30</height>
+                 <width>120</width>
+                 <height>40</height>
                 </size>
                </property>
                <property name="text">
@@ -297,14 +303,14 @@
               <widget class="QPushButton" name="pushButton_cat_save">
                <property name="minimumSize">
                 <size>
-                 <width>100</width>
-                 <height>30</height>
+                 <width>120</width>
+                 <height>40</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>100</width>
-                 <height>30</height>
+                 <width>120</width>
+                 <height>40</height>
                 </size>
                </property>
                <property name="text">
@@ -316,14 +322,14 @@
               <widget class="QPushButton" name="pushButton_cat_close">
                <property name="minimumSize">
                 <size>
-                 <width>100</width>
-                 <height>30</height>
+                 <width>120</width>
+                 <height>40</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>100</width>
-                 <height>30</height>
+                 <width>120</width>
+                 <height>40</height>
                 </size>
                </property>
                <property name="text">
@@ -355,8 +361,8 @@
        <widget class="QTableWidget" name="tableWidget_cat">
         <property name="font">
          <font>
-          <family>Calibri</family>
-          <pointsize>11</pointsize>
+          <family>Ubuntu</family>
+          <pointsize>10</pointsize>
          </font>
         </property>
         <property name="editTriggers">
@@ -378,7 +384,7 @@
          <bool>true</bool>
         </attribute>
         <attribute name="verticalHeaderDefaultSectionSize">
-         <number>27</number>
+         <number>23</number>
         </attribute>
         <column>
          <property name="text">
@@ -389,6 +395,11 @@
          <property name="text">
           <string>Раздел</string>
          </property>
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
         </column>
         <column>
          <property name="text">
@@ -396,8 +407,8 @@
          </property>
          <property name="font">
           <font>
-           <family>Calibri</family>
-           <pointsize>11</pointsize>
+           <family>Ubuntu</family>
+           <pointsize>10</pointsize>
           </font>
          </property>
         </column>
@@ -407,8 +418,8 @@
          </property>
          <property name="font">
           <font>
-           <family>Calibri</family>
-           <pointsize>11</pointsize>
+           <family>Ubuntu</family>
+           <pointsize>10</pointsize>
           </font>
          </property>
         </column>
@@ -420,6 +431,12 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
+   <property name="font">
+    <font>
+     <family>Ubuntu</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="windowTitle">
     <string>toolBar</string>
    </property>
@@ -443,8 +460,8 @@
    </property>
    <property name="font">
     <font>
-     <family>Calibri</family>
-     <pointsize>11</pointsize>
+     <family>Ubuntu</family>
+     <pointsize>10</pointsize>
     </font>
    </property>
   </action>
@@ -454,8 +471,8 @@
    </property>
    <property name="font">
     <font>
-     <family>Calibri</family>
-     <pointsize>11</pointsize>
+     <family>Ubuntu</family>
+     <pointsize>10</pointsize>
     </font>
    </property>
   </action>
@@ -465,8 +482,8 @@
    </property>
    <property name="font">
     <font>
-     <family>Calibri</family>
-     <pointsize>11</pointsize>
+     <family>Ubuntu</family>
+     <pointsize>10</pointsize>
     </font>
    </property>
   </action>
@@ -476,8 +493,8 @@
    </property>
    <property name="font">
     <font>
-     <family>Calibri</family>
-     <pointsize>11</pointsize>
+     <family>Ubuntu</family>
+     <pointsize>10</pointsize>
     </font>
    </property>
   </action>
