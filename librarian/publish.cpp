@@ -24,14 +24,11 @@ void pub::readSetting(){
     QDomDocument doc;
     if (file.open(QIODevice::ReadOnly)){
         doc.setContent(&file);
-        QDomElement el = doc.documentElement();
-        QDomNode node = el.firstChild();
-        node = node.nextSibling();
-        node = node.nextSibling();
-        int _w = node.attributes().namedItem("width").nodeValue().toInt();
-        int _h = node.attributes().namedItem("height").nodeValue().toInt();
-        int _x = node.attributes().namedItem("x").nodeValue().toInt();
-        int _y = node.attributes().namedItem("y").nodeValue().toInt();
+        QDomNodeList node = doc.elementsByTagName("pub");
+        int _w = node.item(0).attributes().namedItem("width").nodeValue().toInt();
+        int _h = node.item(0).attributes().namedItem("height").nodeValue().toInt();
+        int _x = node.item(0).attributes().namedItem("x").nodeValue().toInt();
+        int _y = node.item(0).attributes().namedItem("y").nodeValue().toInt();
         setGeometry(_x, _y, _w, _h);
     }
     file.close();
@@ -48,20 +45,11 @@ void pub::writeSetting(){
     file.open(QIODevice::ReadOnly);
     doc.setContent(out.readAll());
     file.close();
-
-    QDomElement el = doc.documentElement();
-    QDomNode node;
-    node = el.firstChild();
-    node = node.nextSibling();
-    node = node.nextSibling();
-    node.attributes().namedItem("width").setNodeValue(QString("%1")
-                                                      .arg(geometry().size().width()));
-    node.attributes().namedItem("height").setNodeValue(QString("%1")
-                                                      .arg(geometry().size().height()));
-    node.attributes().namedItem("x").setNodeValue(QString("%1")
-                                                      .arg(geometry().x()));
-    node.attributes().namedItem("y").setNodeValue(QString("%1")
-                                                      .arg(geometry().y()));
+    QDomNodeList node = doc.elementsByTagName("pub");
+    node.item(0).attributes().namedItem("width").setNodeValue(QString("%1").arg(geometry().size().width()));
+    node.item(0).attributes().namedItem("height").setNodeValue(QString("%1").arg(geometry().size().height()));
+    node.item(0).attributes().namedItem("x").setNodeValue(QString("%1").arg(geometry().x()));
+    node.item(0).attributes().namedItem("y").setNodeValue(QString("%1").arg(geometry().y()));
 
     file.open(QIODevice::WriteOnly);
     doc.save(out, 4);

@@ -65,6 +65,11 @@
     <addaction name="actionReaders"/>
    </widget>
    <widget class="QMenu" name="menu_3">
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
     <property name="title">
      <string>Библиотека</string>
     </property>
@@ -333,10 +338,20 @@
    <property name="text">
     <string>Приходные документы</string>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </action>
   <action name="action_doc_out">
    <property name="text">
     <string>Расходные документы</string>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </action>
  </widget>

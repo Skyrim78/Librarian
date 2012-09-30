@@ -1,9 +1,12 @@
 #include "docs.h"
+#include "doc_card.h"
 
 docs::docs(int _v, QWidget *parent):QMainWindow(parent){
     ui.setupUi(this);
     vid = _v;
     ui.groupBox_column->hide();
+    ui.groupBox_doc->hide();
+    readDocs();
     readSetting();
     selectColumn();
 
@@ -13,8 +16,18 @@ docs::docs(int _v, QWidget *parent):QMainWindow(parent){
         setWindowTitle("Расходные документы");
     }
 
+    QSqlQuery org("select organizations.name from organizations");
+    while (org.next()){
+        ui.comboBox_org->addItem(org.value(0).toString());
+    }
+
+
+
     connect(ui.actionClose, SIGNAL(triggered()), this, SLOT(close()));
     connect(ui.actionAdd, SIGNAL(triggered()), this, SLOT(addDoc()));
+
+    connect(ui.pushButton_save, SIGNAL(clicked()), this, SLOT(saveDoc()));
+    connect(ui.pushButton_close, SIGNAL(clicked()), this, SLOT(closeDoc()));
 
     connect(ui.toolButton_col, SIGNAL(clicked(bool)), ui.groupBox_column, SLOT(setVisible(bool)));
     connect(ui.checkBox_name, SIGNAL(clicked(bool)), this, SLOT(selectColumn()));
@@ -23,7 +36,7 @@ docs::docs(int _v, QWidget *parent):QMainWindow(parent){
     connect(ui.checkBox_org, SIGNAL(clicked(bool)), this, SLOT(selectColumn()));
     connect(ui.checkBox_note, SIGNAL(clicked(bool)), this, SLOT(selectColumn()));
 
-
+    connect(ui.tableWidget_docs, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(openDoc()));
 }
 
 void docs::closeEvent(QCloseEvent *){
@@ -94,12 +107,13 @@ void docs::readDocs(){
     for (int a = ui.tableWidget_docs->rowCount(); a >= 0; a--){
         ui.tableWidget_docs->removeRow(a);
     }
-    QSqlQuery query(QString("select docs.id, docs.name, docs.num, docs.date_d, docs.org, docs.note "
-                            "from docs where docs.vid = \'%1\' ").arg(vid));
+    QSqlQuery query(QString("select docs.id, docs.name, docs.num, docs.date_d, organizations.name, docs.note "
+                            "from docs, organizations where organizations.id = docs.org and docs.vid = \'%1\' "
+                            "order by docs.date_d").arg(vid));
     int row = 0;
     while (query.next()){
         ui.tableWidget_docs->insertRow(row);
-        for (int col = 0; col < 5; col ++){
+        for (int col = 0; col < 6; col ++){
             QTableWidgetItem *item = new QTableWidgetItem(query.value(col).toString());
             ui.tableWidget_docs->setItem(row, col, item);
         }
@@ -108,11 +122,51 @@ void docs::readDocs(){
 }
 
 void docs::addDoc(){
+    ui.groupBox_doc->setVisible(true);
+    ui.dateEdit_doc->setDate(QDate::currentDate());
+    ui.comboBox_org->setCurrentIndex(-1);
+}
 
+void docs::closeDoc(){
+    ui.lineEdit_name->clear();
+    ui.lineEdit_num->clear();
+    ui.dateEdit_doc->setDate(QDate::currentDate());
+    ui.comboBox_org->setCurrentIndex(-1);
+    ui.groupBox_doc->hide();
+}
+
+void docs::saveDoc(){
+    QSqlQuery queryOrg(QString("select organizations.id from organizations where organizations.name = \'%1\' ")
+                       .arg(ui.comboBox_org->currentText()));
+    queryOrg.next();
+    QSqlQuery query(QString("insert into docs (name, num, date_d, org, vid) "
+                            "values (:name, :num, :date_d, :org, :vid)"));
+    query.bindValue(0, ui.lineEdit_name->text());
+    query.bindValue(1, ui.lineEdit_num->text());
+    query.bindValue(2, ui.dateEdit_doc->date().toString("yyyy-MM-dd"));
+    query.bindValue(3, queryOrg.value(0).toString());
+    query.bindValue(4, QString("%1").arg(vid));
+    query.exec();
+
+    QSqlQuery queryID("select Max(docs.id) from docs");
+    queryID.next();
+    QList<int> listDocs;
+    listDocs << queryID.value(0).toInt();
+
+    closeDoc();
+    docCard *dc = new docCard(listDocs, 0, this);
+    dc->exec();
+    readDocs();
 }
 
 void docs::openDoc(){
-
+    QList<int> listDocs;
+    for (int a = 0; a < ui.tableWidget_docs->rowCount(); a++){
+        listDocs << ui.tableWidget_docs->item(a, 0)->text().toInt();
+    }
+    docCard *dc = new docCard(listDocs, ui.tableWidget_docs->currentRow(), this);
+    dc->exec();
+    readDocs();
 }
 
 

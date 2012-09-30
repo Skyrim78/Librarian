@@ -21,7 +21,9 @@ SOURCES += main.cpp\
     readers.cpp \
     readerCard.cpp \
     readerBook.cpp \
-    docs.cpp
+    docs.cpp \
+    doc_card.cpp \
+    doc_item.cpp
 
 HEADERS  += librarian.h \
     organizations.h \
@@ -33,7 +35,9 @@ HEADERS  += librarian.h \
     readers.h \
     readerCard.h \
     readerBook.h \
-    docs.h
+    docs.h \
+    doc_card.h \
+    doc_item.h
 
 FORMS    += librarian.ui \
     organizations.ui \
@@ -45,4 +49,6 @@ FORMS    += librarian.ui \
     readers.ui \
     readerCard.ui \
     readerBook.ui \
-    docs.ui
+    docs.ui \
+    docs_card.ui \
+    doc_items.ui

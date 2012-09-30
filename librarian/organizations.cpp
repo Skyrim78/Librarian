@@ -139,18 +139,17 @@ void org::readSettingColumns(){
     QDomDocument doc;
     if (file.open(QIODevice::ReadOnly)){
         doc.setContent(&file);
-        QDomElement el = doc.documentElement();
-        QDomNode node = el.firstChild();
-        ui.checkBox_name->setChecked(node.attributes().namedItem("name").nodeValue().toInt());
-        ui.checkBox_address->setChecked(node.attributes().namedItem("address").nodeValue().toInt());
-        ui.checkBox_phone->setChecked(node.attributes().namedItem("phone").nodeValue().toInt());
-        ui.checkBox_email->setChecked(node.attributes().namedItem("email").nodeValue().toInt());
-        ui.checkBox_face->setChecked(node.attributes().namedItem("face").nodeValue().toInt());
-        ui.checkBox_note->setChecked(node.attributes().namedItem("note").nodeValue().toInt());
-        int _w = node.attributes().namedItem("width").nodeValue().toInt();
-        int _h = node.attributes().namedItem("height").nodeValue().toInt();
-        int _x = node.attributes().namedItem("x").nodeValue().toInt();
-        int _y = node.attributes().namedItem("y").nodeValue().toInt();
+        QDomNodeList node = doc.elementsByTagName("org");
+        ui.checkBox_name->setChecked(node.item(0).attributes().namedItem("name").nodeValue().toInt());
+        ui.checkBox_address->setChecked(node.item(0).attributes().namedItem("address").nodeValue().toInt());
+        ui.checkBox_phone->setChecked(node.item(0).attributes().namedItem("phone").nodeValue().toInt());
+        ui.checkBox_email->setChecked(node.item(0).attributes().namedItem("email").nodeValue().toInt());
+        ui.checkBox_face->setChecked(node.item(0).attributes().namedItem("face").nodeValue().toInt());
+        ui.checkBox_note->setChecked(node.item(0).attributes().namedItem("note").nodeValue().toInt());
+        int _w = node.item(0).attributes().namedItem("width").nodeValue().toInt();
+        int _h = node.item(0).attributes().namedItem("height").nodeValue().toInt();
+        int _x = node.item(0).attributes().namedItem("x").nodeValue().toInt();
+        int _y = node.item(0).attributes().namedItem("y").nodeValue().toInt();
         setGeometry(_x, _y, _w, _h);
     }
     file.close();
@@ -167,30 +166,17 @@ void org::writeSettingColumns(){
     file.open(QIODevice::ReadOnly);
     doc.setContent(out.readAll());
     file.close();
-
-    QDomElement el = doc.documentElement();
-    QDomNode node;
-    node = el.firstChild();
-    node.attributes().namedItem("name").setNodeValue(QString("%1")
-                                                     .arg(ui.checkBox_name->isChecked()));
-    node.attributes().namedItem("address").setNodeValue(QString("%1")
-                                                     .arg(ui.checkBox_address->isChecked()));
-    node.attributes().namedItem("phone").setNodeValue(QString("%1")
-                                                     .arg(ui.checkBox_phone->isChecked()));
-    node.attributes().namedItem("email").setNodeValue(QString("%1")
-                                                     .arg(ui.checkBox_email->isChecked()));
-    node.attributes().namedItem("face").setNodeValue(QString("%1")
-                                                     .arg(ui.checkBox_face->isChecked()));
-    node.attributes().namedItem("note").setNodeValue(QString("%1")
-                                                     .arg(ui.checkBox_note->isChecked()));
-    node.attributes().namedItem("width").setNodeValue(QString("%1")
-                                                      .arg(geometry().size().width()));
-    node.attributes().namedItem("height").setNodeValue(QString("%1")
-                                                      .arg(geometry().size().height()));
-    node.attributes().namedItem("x").setNodeValue(QString("%1")
-                                                      .arg(geometry().x()));
-    node.attributes().namedItem("y").setNodeValue(QString("%1")
-                                                      .arg(geometry().y()));
+    QDomNodeList node = doc.elementsByTagName("org");
+    node.item(0).attributes().namedItem("name").setNodeValue(QString("%1").arg(ui.checkBox_name->isChecked()));
+    node.item(0).attributes().namedItem("address").setNodeValue(QString("%1").arg(ui.checkBox_address->isChecked()));
+    node.item(0).attributes().namedItem("phone").setNodeValue(QString("%1").arg(ui.checkBox_phone->isChecked()));
+    node.item(0).attributes().namedItem("email").setNodeValue(QString("%1").arg(ui.checkBox_email->isChecked()));
+    node.item(0).attributes().namedItem("face").setNodeValue(QString("%1").arg(ui.checkBox_face->isChecked()));
+    node.item(0).attributes().namedItem("note").setNodeValue(QString("%1").arg(ui.checkBox_note->isChecked()));
+    node.item(0).attributes().namedItem("width").setNodeValue(QString("%1").arg(geometry().size().width()));
+    node.item(0).attributes().namedItem("height").setNodeValue(QString("%1").arg(geometry().size().height()));
+    node.item(0).attributes().namedItem("x").setNodeValue(QString("%1").arg(geometry().x()));
+    node.item(0).attributes().namedItem("y").setNodeValue(QString("%1").arg(geometry().y()));
 
     file.open(QIODevice::WriteOnly);
     doc.save(out, 4);

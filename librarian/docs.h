@@ -25,6 +25,9 @@ protected slots:
     void openDoc();
     void addDoc();
 
+    void saveDoc();
+    void closeDoc();
+
 
 };
 
