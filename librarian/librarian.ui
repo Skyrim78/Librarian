@@ -63,6 +63,8 @@
     <addaction name="actionAuth"/>
     <addaction name="actionBooks"/>
     <addaction name="actionReaders"/>
+    <addaction name="separator"/>
+    <addaction name="actionImport"/>
    </widget>
    <widget class="QMenu" name="menu_3">
     <property name="font">
@@ -78,9 +80,39 @@
     <addaction name="action_doc_in"/>
     <addaction name="action_doc_out"/>
    </widget>
+   <widget class="QMenu" name="menu_4">
+    <property name="title">
+     <string>Поиск</string>
+    </property>
+    <addaction name="action"/>
+   </widget>
+   <widget class="QMenu" name="menu_5">
+    <property name="title">
+     <string>Отчеты</string>
+    </property>
+    <addaction name="action_2"/>
+    <addaction name="action_3"/>
+    <addaction name="action_4"/>
+    <addaction name="action_5"/>
+    <addaction name="separator"/>
+    <addaction name="action_7"/>
+   </widget>
+   <widget class="QMenu" name="menu_6">
+    <property name="title">
+     <string>?</string>
+    </property>
+    <addaction name="action_8"/>
+    <addaction name="action_9"/>
+    <addaction name="action_Qt"/>
+    <addaction name="separator"/>
+    <addaction name="action_11"/>
+   </widget>
    <addaction name="menu"/>
    <addaction name="menu_2"/>
    <addaction name="menu_3"/>
+   <addaction name="menu_4"/>
+   <addaction name="menu_5"/>
+   <addaction name="menu_6"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -352,6 +384,61 @@
     <font>
      <pointsize>10</pointsize>
     </font>
+   </property>
+  </action>
+  <action name="action">
+   <property name="text">
+    <string>Конструктор запросов</string>
+   </property>
+  </action>
+  <action name="action_2">
+   <property name="text">
+    <string>Отчет о поступлении</string>
+   </property>
+  </action>
+  <action name="action_3">
+   <property name="text">
+    <string>Отчет о выбытии книг</string>
+   </property>
+  </action>
+  <action name="action_4">
+   <property name="text">
+    <string>Книги у читателей</string>
+   </property>
+  </action>
+  <action name="action_5">
+   <property name="text">
+    <string>Инвентаризация</string>
+   </property>
+  </action>
+  <action name="action_7">
+   <property name="text">
+    <string>Отчет по невозвратам</string>
+   </property>
+  </action>
+  <action name="action_8">
+   <property name="text">
+    <string>Справка</string>
+   </property>
+  </action>
+  <action name="action_9">
+   <property name="text">
+    <string>О программе</string>
+   </property>
+  </action>
+  <action name="action_Qt">
+   <property name="text">
+    <string>О Qt</string>
+   </property>
+  </action>
+  <action name="action_11">
+   <property name="text">
+    <string>Выход</string>
+   </property>
+  </action>
+  <action name="actionImport">
+   <property name="text">
+    <string>Импорт</string>
    </property>
   </action>
  </widget>

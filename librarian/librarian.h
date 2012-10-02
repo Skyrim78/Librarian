@@ -40,6 +40,10 @@ public slots:
     void toReaders();
     //---------------
     void toDocsIn();
+    void toDocsOut();
+    void toBiblio(); //выдача книг
+    //--------------
+    void toImport();
 
 };
 

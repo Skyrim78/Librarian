@@ -7,6 +7,9 @@
 #include "books.h"
 #include "readers.h"
 #include "docs.h"
+#include "searchReaders.h"
+//-----------------------------
+#include "import.h"
 
 librarian::librarian(QWidget *parent) :
     QMainWindow(parent),
@@ -31,6 +34,10 @@ librarian::librarian(QWidget *parent) :
     connect(ui->actionBooks, SIGNAL(triggered()), this, SLOT(toBooks()));
     connect(ui->actionReaders, SIGNAL(triggered()), this, SLOT(toReaders()));
     connect(ui->action_doc_in, SIGNAL(triggered()), this, SLOT(toDocsIn()));
+    connect(ui->action_doc_out, SIGNAL(triggered()), this, SLOT(toDocsOut()));
+    connect(ui->action_biblio, SIGNAL(triggered()), this, SLOT(toBiblio()));
+    //------------------
+    connect(ui->actionImport, SIGNAL(triggered()), this, SLOT(toImport()));
 }
 
 librarian::~librarian()
@@ -165,4 +172,19 @@ void librarian::toReaders(){
 void librarian::toDocsIn(){
     docs *doc_in = new docs(1, this);
     doc_in->show();
+}
+
+void librarian::toDocsOut(){
+    docs *doc_out = new docs(2, this);
+    doc_out->show();
+}
+
+void librarian::toBiblio(){
+    sReaders *sR = new sReaders(this);
+    sR->exec();
+}
+
+void librarian::toImport(){
+    import *im = new import(this);
+    im->exec();
 }

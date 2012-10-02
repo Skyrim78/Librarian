@@ -197,6 +197,7 @@ void docCard::addItem(){
 
     docItem *di = new docItem(listA, 0, list.at(curr), this);
     di->exec();
+    readDoc();
 }
 
 void docCard::openItem(){
@@ -206,6 +207,7 @@ void docCard::openItem(){
     }
     docItem *di = new docItem(listA, ui.tableWidget_book->currentRow(), list.at(curr), this);
     di->exec();
+    readDoc();
 }
 
 void docCard::toFirst(){

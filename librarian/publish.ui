@@ -216,6 +216,21 @@
       </item>
       <item row="1" column="0">
        <widget class="QTableWidget" name="tableWidget_pub">
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <property name="alternatingRowColors">
+         <bool>true</bool>
+        </property>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::SingleSelection</enum>
+        </property>
+        <property name="selectionBehavior">
+         <enum>QAbstractItemView::SelectRows</enum>
+        </property>
+        <property name="sortingEnabled">
+         <bool>true</bool>
+        </property>
         <attribute name="verticalHeaderDefaultSectionSize">
          <number>23</number>
         </attribute>

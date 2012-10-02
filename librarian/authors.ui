@@ -391,6 +391,8 @@
     <bool>false</bool>
    </attribute>
    <addaction name="actionAdd"/>
+   <addaction name="actionImport"/>
+   <addaction name="actionExport"/>
    <addaction name="actionClose"/>
    <addaction name="actionHelp"/>
   </widget>
@@ -407,6 +409,16 @@
   <action name="actionHelp">
    <property name="text">
     <string>?</string>
+   </property>
+  </action>
+  <action name="actionImport">
+   <property name="text">
+    <string>Импорт</string>
+   </property>
+  </action>
+  <action name="actionExport">
+   <property name="text">
+    <string>Экспорт</string>
    </property>
   </action>
  </widget>

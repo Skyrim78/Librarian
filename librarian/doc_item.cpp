@@ -6,6 +6,7 @@ docItem::docItem(QList<int> _list, int _curr, int _doc, QWidget *parent):QDialog
     curr = _curr;
     doc = _doc;
     ui.spinBox_id_book->hide();
+    ui.tableWidget_res->setColumnHidden(0, true);
 
     openItem();
 
@@ -118,6 +119,27 @@ void docItem::openItem(){
         ui.spinBox_coun->setValue(query.value(2).toInt());
     }
     viewItems();
+    if (list.size() == 0){
+        ui.pushButton_toFirst->setEnabled(false);
+        ui.pushButton_toLast->setEnabled(false);
+        ui.pushButton_toNext->setEnabled(false);
+        ui.pushButton_toPrev->setEnabled(false);
+    } else if (list.size() > 0) {
+        if (curr == 0){
+            ui.pushButton_toFirst->setEnabled(false);
+            ui.pushButton_toPrev->setEnabled(false);
+        } else {
+            ui.pushButton_toFirst->setEnabled(true);
+            ui.pushButton_toPrev->setEnabled(true);
+        }
+        if (curr == list.size() - 1){
+            ui.pushButton_toLast->setEnabled(false);
+            ui.pushButton_toNext->setEnabled(false);
+        } else {
+            ui.pushButton_toLast->setEnabled(true);
+            ui.pushButton_toNext->setEnabled(true);
+        }
+    }
 }
 
 void docItem::saveItem(){
