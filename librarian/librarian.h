@@ -44,6 +44,7 @@ public slots:
     void toBiblio(); //выдача книг
     //--------------
     void toImport();
+    void toSearch();
 
 };
 

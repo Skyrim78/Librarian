@@ -17,7 +17,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Книги</string>
+   <string>Books</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -32,7 +32,7 @@
          </size>
         </property>
         <property name="title">
-         <string>Колонки</string>
+         <string>Columns</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_2">
          <item row="0" column="0">
@@ -47,63 +47,63 @@
            <item>
             <widget class="QCheckBox" name="checkBox_title">
              <property name="text">
-              <string>Название</string>
+              <string>Title</string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QCheckBox" name="checkBox_auth">
              <property name="text">
-              <string>Автор</string>
+              <string>Author</string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QCheckBox" name="checkBox_sect">
              <property name="text">
-              <string>Раздел</string>
+              <string>Section</string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QCheckBox" name="checkBox_cat">
              <property name="text">
-              <string>Категория</string>
+              <string>Category</string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QCheckBox" name="checkBox_pub">
              <property name="text">
-              <string>Издательство</string>
+              <string>Publisher</string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QCheckBox" name="checkBox_year">
              <property name="text">
-              <string>Год</string>
+              <string>Year</string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QCheckBox" name="checkBox_place">
              <property name="text">
-              <string>Место</string>
+              <string>Place</string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QCheckBox" name="checkBox_in">
              <property name="text">
-              <string>Получено</string>
+              <string>Received</string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QCheckBox" name="checkBox_out">
              <property name="text">
-              <string>Выбыло</string>
+              <string>Disposal</string>
              </property>
             </widget>
            </item>
@@ -117,7 +117,7 @@
            <item>
             <widget class="QCheckBox" name="checkBox_dost">
              <property name="text">
-              <string>Доступно</string>
+              <string>Avaliable</string>
              </property>
             </widget>
            </item>
@@ -215,47 +215,47 @@
           </column>
           <column>
            <property name="text">
-            <string>Название</string>
+            <string>Title</string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string>Автор</string>
+            <string>Author</string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string>Раздел</string>
+            <string>Section</string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string>Категория</string>
+            <string>Category</string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string>Издательство</string>
+            <string>Publisher</string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string>Год</string>
+            <string>Year</string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string>Место</string>
+            <string>Place</string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string>Получено</string>
+            <string>Received</string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string>Выбыло</string>
+            <string>Disposal</string>
            </property>
           </column>
           <column>
@@ -265,7 +265,7 @@
           </column>
           <column>
            <property name="text">
-            <string>Доступно</string>
+            <string>Avaliable</string>
            </property>
           </column>
          </widget>
@@ -293,12 +293,12 @@
   </widget>
   <action name="actionAdd">
    <property name="text">
-    <string>Добавить</string>
+    <string>Add</string>
    </property>
   </action>
   <action name="actionClose">
    <property name="text">
-    <string>Закрыть</string>
+    <string>Close</string>
    </property>
   </action>
   <action name="actionHelp">

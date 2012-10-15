@@ -9,7 +9,6 @@ QT       += core gui sql xml
 TARGET = librarian
 TEMPLATE = app
 
-
 SOURCES += main.cpp\
         librarian.cpp \
     organizations.cpp \
@@ -25,7 +24,8 @@ SOURCES += main.cpp\
     doc_card.cpp \
     doc_item.cpp \
     searchReaders.cpp \
-    import.cpp
+    import.cpp \
+    search.cpp
 
 HEADERS  += librarian.h \
     organizations.h \
@@ -41,7 +41,8 @@ HEADERS  += librarian.h \
     doc_card.h \
     doc_item.h \
     searchReaders.h \
-    import.h
+    import.h \
+    search.h
 
 FORMS    += librarian.ui \
     organizations.ui \
@@ -57,4 +58,5 @@ FORMS    += librarian.ui \
     docs_card.ui \
     doc_items.ui \
     searchReaders.ui \
-    import.ui
+    import.ui \
+    search.ui

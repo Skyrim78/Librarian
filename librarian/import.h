@@ -15,6 +15,7 @@ public slots:
     void openFile();
     void importData();
     void selectObject();
+
 };
 
 #endif // IMPORT_H

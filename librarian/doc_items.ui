@@ -16,7 +16,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Книги</string>
+   <string>Books</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_3">
    <item row="0" column="0">
@@ -24,7 +24,7 @@
      <item>
       <widget class="QGroupBox" name="groupBox">
        <property name="title">
-        <string>Поиск</string>
+        <string>Search</string>
        </property>
        <layout class="QGridLayout" name="gridLayout">
         <item row="0" column="0">
@@ -57,7 +57,7 @@
             <item>
              <widget class="QRadioButton" name="radioButton_title">
               <property name="text">
-               <string>Название</string>
+               <string>Title</string>
               </property>
              </widget>
             </item>
@@ -114,22 +114,22 @@
             </column>
             <column>
              <property name="text">
-              <string>Название</string>
+              <string>Title</string>
              </property>
             </column>
             <column>
              <property name="text">
-              <string>Автор</string>
+              <string>Author</string>
              </property>
             </column>
             <column>
              <property name="text">
-              <string>Издательство</string>
+              <string>Publisher</string>
              </property>
             </column>
             <column>
              <property name="text">
-              <string>Год</string>
+              <string>Year</string>
              </property>
             </column>
            </widget>
@@ -147,7 +147,7 @@
        <item>
         <widget class="QLabel" name="label">
          <property name="text">
-          <string>Название:</string>
+          <string>Title:</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -164,7 +164,7 @@
        <item>
         <widget class="QLabel" name="label_2">
          <property name="text">
-          <string>Количество:</string>
+          <string>Quantity</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -219,7 +219,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Удалить</string>
+          <string>Del</string>
          </property>
         </widget>
        </item>
@@ -327,7 +327,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Сохранить</string>
+          <string>Save</string>
          </property>
         </widget>
        </item>
@@ -346,7 +346,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Закрыть</string>
+          <string>Close</string>
          </property>
         </widget>
        </item>
@@ -408,27 +408,27 @@
           </column>
           <column>
            <property name="text">
-            <string>Название</string>
+            <string>Title</string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string>Автор</string>
+            <string>Author</string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string>Издательство</string>
+            <string>Publisher</string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string>Год</string>
+            <string>Year</string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string>Кол-во</string>
+            <string>Quantity</string>
            </property>
           </column>
          </widget>

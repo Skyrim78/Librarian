@@ -130,6 +130,7 @@ void org::deleteOrg(){
     QSqlQuery _d(QString("delete from organizations where organizations.id = \'%1\' ").arg(id));
     _d.exec();
     updateOrg();
+    ui.groupBox_card->hide();
 }
 
 void org::readSettingColumns(){

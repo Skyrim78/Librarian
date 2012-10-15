@@ -36,7 +36,7 @@
         </size>
        </property>
        <property name="title">
-        <string>Параметры</string>
+        <string>Setting</string>
        </property>
        <layout class="QGridLayout" name="gridLayout">
         <item row="0" column="0">
@@ -46,7 +46,7 @@
             <item>
              <widget class="QLabel" name="label_4">
               <property name="text">
-               <string>Объект:</string>
+               <string>Object:</string>
               </property>
              </widget>
             </item>
@@ -54,37 +54,37 @@
              <widget class="QComboBox" name="comboBox_object">
               <item>
                <property name="text">
-                <string>Авторы</string>
+                <string>Authors:</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>Издательства</string>
+                <string>Publishers:</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>Читатели</string>
+                <string>Sections:</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>Организации</string>
+                <string>Category:</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>Разделы</string>
+                <string>Books:</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>Категории</string>
+                <string>Readers:</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>Книги</string>
+                <string>Organizations:</string>
                </property>
               </item>
              </widget>
@@ -109,7 +109,7 @@
             <item>
              <widget class="QLabel" name="label">
               <property name="text">
-               <string>Номер первой строки:</string>
+               <string>First line number:</string>
               </property>
              </widget>
             </item>
@@ -148,12 +148,12 @@
             </attribute>
             <column>
              <property name="text">
-              <string>Название</string>
+              <string>Title</string>
              </property>
             </column>
             <column>
              <property name="text">
-              <string>№ столбца</string>
+              <string>№ column</string>
              </property>
             </column>
            </widget>
@@ -183,7 +183,7 @@
          <item>
           <widget class="QLabel" name="label_3">
            <property name="text">
-            <string>Разделитель:</string>
+            <string>Split</string>
            </property>
           </widget>
          </item>
@@ -236,7 +236,7 @@
          <item>
           <widget class="QLabel" name="label_2">
            <property name="text">
-            <string>Фаил:</string>
+            <string>File:</string>
            </property>
           </widget>
          </item>
@@ -272,15 +272,39 @@
          </item>
          <item>
           <widget class="QPushButton" name="pushButton_import">
+           <property name="minimumSize">
+            <size>
+             <width>120</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>120</width>
+             <height>40</height>
+            </size>
+           </property>
            <property name="text">
-            <string>Импорт</string>
+            <string>Import</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="pushButton_close">
+           <property name="minimumSize">
+            <size>
+             <width>120</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>120</width>
+             <height>40</height>
+            </size>
+           </property>
            <property name="text">
-            <string>Закрыть</string>
+            <string>Close</string>
            </property>
           </widget>
          </item>

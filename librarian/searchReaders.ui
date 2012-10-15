@@ -16,7 +16,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Поиск читателя</string>
+   <string>Search of readers</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0">
@@ -39,7 +39,7 @@
        <item>
         <widget class="QRadioButton" name="radioButton_fam">
          <property name="text">
-          <string>Фамилия</string>
+          <string>Surname</string>
          </property>
          <property name="checked">
           <bool>true</bool>
@@ -49,7 +49,7 @@
        <item>
         <widget class="QRadioButton" name="radioButton_num">
          <property name="text">
-          <string>№ билета</string>
+          <string>№ ticket</string>
          </property>
         </widget>
        </item>
@@ -81,63 +81,63 @@
             <item>
              <widget class="QCheckBox" name="checkBox_fam">
               <property name="text">
-               <string>Фамилия</string>
+               <string>Surname</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QCheckBox" name="checkBox_ima">
               <property name="text">
-               <string>Имя</string>
+               <string>Name</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QCheckBox" name="checkBox_otc">
               <property name="text">
-               <string>Отчетство</string>
+               <string>Patronymic</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QCheckBox" name="checkBox_date_r">
               <property name="text">
-               <string>Дата рождения</string>
+               <string>Date of birth</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QCheckBox" name="checkBox_num">
               <property name="text">
-               <string>№ билета</string>
+               <string>№ ticket</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QCheckBox" name="checkBox_address">
               <property name="text">
-               <string>Адрес</string>
+               <string>Address</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QCheckBox" name="checkBox_phone">
               <property name="text">
-               <string>Телефон</string>
+               <string>Phone</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QCheckBox" name="checkBox_readed">
               <property name="text">
-               <string>Прочитано</string>
+               <string>Read late</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QCheckBox" name="checkBox_reading">
               <property name="text">
-               <string>Читает</string>
+               <string>Reading now</string>
               </property>
              </widget>
             </item>
@@ -214,47 +214,47 @@
            </column>
            <column>
             <property name="text">
-             <string>Фамилия</string>
+             <string>Surname</string>
             </property>
            </column>
            <column>
             <property name="text">
-             <string>Имя</string>
+             <string>Name</string>
             </property>
            </column>
            <column>
             <property name="text">
-             <string>Отчество</string>
+             <string>Patronymic</string>
             </property>
            </column>
            <column>
             <property name="text">
-             <string>Дата рождения</string>
+             <string>Date of birth</string>
             </property>
            </column>
            <column>
             <property name="text">
-             <string>№ билета</string>
+             <string>№ ticket</string>
             </property>
            </column>
            <column>
             <property name="text">
-             <string>Адрес</string>
+             <string>Address</string>
             </property>
            </column>
            <column>
             <property name="text">
-             <string>Телефон</string>
+             <string>Phone</string>
             </property>
            </column>
            <column>
             <property name="text">
-             <string>Прочитано</string>
+             <string>Read late</string>
             </property>
            </column>
            <column>
             <property name="text">
-             <string>Читает</string>
+             <string>Reading now</string>
             </property>
            </column>
           </widget>

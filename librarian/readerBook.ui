@@ -16,7 +16,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Lending/receiving book</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0">
@@ -24,7 +24,7 @@
      <item>
       <widget class="QGroupBox" name="groupBox_search">
        <property name="title">
-        <string>Поиск</string>
+        <string>Search</string>
        </property>
        <layout class="QGridLayout" name="gridLayout">
         <item row="0" column="0">
@@ -47,7 +47,7 @@
             <item>
              <widget class="QRadioButton" name="radioButton_name">
               <property name="text">
-               <string>Название</string>
+               <string>Title of books</string>
               </property>
               <property name="checked">
                <bool>true</bool>
@@ -116,7 +116,7 @@
             </column>
             <column>
              <property name="text">
-              <string>Название</string>
+              <string>Title</string>
              </property>
              <property name="font">
               <font>
@@ -126,7 +126,7 @@
             </column>
             <column>
              <property name="text">
-              <string>Авторы</string>
+              <string>Author</string>
              </property>
              <property name="font">
               <font>
@@ -136,7 +136,7 @@
             </column>
             <column>
              <property name="text">
-              <string>Доступно</string>
+              <string>Avaliable</string>
              </property>
              <property name="font">
               <font>
@@ -159,7 +159,7 @@
        <item>
         <widget class="QLabel" name="label">
          <property name="text">
-          <string>Название:</string>
+          <string>Title:</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -191,7 +191,7 @@
          <item>
           <widget class="QCheckBox" name="checkBox_take">
            <property name="text">
-            <string>Выдать</string>
+            <string>Outstanding book</string>
            </property>
           </widget>
          </item>
@@ -200,7 +200,7 @@
            <item>
             <widget class="QLabel" name="label_2">
              <property name="text">
-              <string>Выдано:</string>
+              <string>Date:</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -223,7 +223,7 @@
          <item>
           <widget class="QCheckBox" name="checkBox_get">
            <property name="text">
-            <string>Получить</string>
+            <string>Get the book</string>
            </property>
           </widget>
          </item>
@@ -232,7 +232,7 @@
            <item>
             <widget class="QLabel" name="label_3">
              <property name="text">
-              <string>Получено:</string>
+              <string>Date:</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -282,7 +282,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Удалить</string>
+          <string>Del</string>
          </property>
          <property name="flat">
           <bool>false</bool>
@@ -393,7 +393,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Сохранить</string>
+          <string>Save</string>
          </property>
         </widget>
        </item>
@@ -412,7 +412,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Закрыть</string>
+          <string>Close</string>
          </property>
         </widget>
        </item>

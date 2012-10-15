@@ -16,7 +16,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Документ</string>
+   <string>Document</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_3">
    <item row="0" column="0">
@@ -34,7 +34,7 @@
             <item>
              <widget class="QLabel" name="label_2">
               <property name="text">
-               <string>№ документа:</string>
+               <string>№</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -60,7 +60,7 @@
             <item>
              <widget class="QLabel" name="label_3">
               <property name="text">
-               <string>Дата:</string>
+               <string>Date</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -94,7 +94,7 @@
             <item>
              <widget class="QLabel" name="label_4">
               <property name="text">
-               <string>Название:</string>
+               <string>Title of document</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -111,7 +111,7 @@
             <item>
              <widget class="QLabel" name="label_5">
               <property name="text">
-               <string>Организация:</string>
+               <string>Organization</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -231,35 +231,35 @@
             <item>
              <widget class="QCheckBox" name="checkBox_title">
               <property name="text">
-               <string>Название</string>
+               <string>Title</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QCheckBox" name="checkBox_auth">
               <property name="text">
-               <string>Автор</string>
+               <string>Author</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QCheckBox" name="checkBox_pub">
               <property name="text">
-               <string>Издательство</string>
+               <string>Publisher</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QCheckBox" name="checkBox_year">
               <property name="text">
-               <string>Год</string>
+               <string>Year</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QCheckBox" name="checkBox_count">
               <property name="text">
-               <string>Количество</string>
+               <string>Quantity</string>
               </property>
              </widget>
             </item>
@@ -318,27 +318,27 @@
          </column>
          <column>
           <property name="text">
-           <string>Название</string>
+           <string>Title</string>
           </property>
          </column>
          <column>
           <property name="text">
-           <string>Автор</string>
+           <string>Author</string>
           </property>
          </column>
          <column>
           <property name="text">
-           <string>Издательство</string>
+           <string>Publisher</string>
           </property>
          </column>
          <column>
           <property name="text">
-           <string>Год изд.</string>
+           <string>Year</string>
           </property>
          </column>
          <column>
           <property name="text">
-           <string>Количество</string>
+           <string>Quantity</string>
           </property>
          </column>
         </widget>
@@ -350,7 +350,7 @@
        <item>
         <widget class="QLabel" name="label">
          <property name="text">
-          <string>Примечание:</string>
+          <string>Note:</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -379,7 +379,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Удалить</string>
+          <string>Del</string>
          </property>
         </widget>
        </item>
@@ -487,7 +487,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Сохранить</string>
+          <string>Save</string>
          </property>
         </widget>
        </item>
@@ -506,7 +506,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Закрыть</string>
+          <string>Close</string>
          </property>
         </widget>
        </item>

@@ -20,7 +20,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Читатели</string>
+   <string>Readers</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -56,56 +56,56 @@
           <item>
            <widget class="QCheckBox" name="checkBox_fam">
             <property name="text">
-             <string>Фамилия</string>
+             <string>Surname</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QCheckBox" name="checkBox_ima">
             <property name="text">
-             <string>Имя</string>
+             <string>Name</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QCheckBox" name="checkBox_otc">
             <property name="text">
-             <string>Отчество</string>
+             <string>Patronymic</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QCheckBox" name="checkBox_data_r">
             <property name="text">
-             <string>Дата рождения</string>
+             <string>Date of birth</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QCheckBox" name="checkBox_num">
             <property name="text">
-             <string>№ билета</string>
+             <string>№ ticket</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QCheckBox" name="checkBox_phone">
             <property name="text">
-             <string>Телефон</string>
+             <string>Phone</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QCheckBox" name="checkBox_address">
             <property name="text">
-             <string>Адрес</string>
+             <string>Address</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QCheckBox" name="checkBox_doc">
             <property name="text">
-             <string>Документ</string>
+             <string>Document</string>
             </property>
            </widget>
           </item>
@@ -187,7 +187,7 @@
           </column>
           <column>
            <property name="text">
-            <string>Фамилия</string>
+            <string>Surname</string>
            </property>
            <property name="font">
             <font>
@@ -201,7 +201,7 @@
           </column>
           <column>
            <property name="text">
-            <string>Имя</string>
+            <string>Name</string>
            </property>
            <property name="font">
             <font>
@@ -214,7 +214,7 @@
           </column>
           <column>
            <property name="text">
-            <string>Отчество</string>
+            <string>Patrinymic</string>
            </property>
            <property name="font">
             <font>
@@ -227,7 +227,7 @@
           </column>
           <column>
            <property name="text">
-            <string>Дата рождения</string>
+            <string>Date of birth</string>
            </property>
            <property name="font">
             <font>
@@ -240,7 +240,7 @@
           </column>
           <column>
            <property name="text">
-            <string>№ билета</string>
+            <string>№ ticket</string>
            </property>
            <property name="font">
             <font>
@@ -253,7 +253,7 @@
           </column>
           <column>
            <property name="text">
-            <string>Телефон</string>
+            <string>Phone</string>
            </property>
            <property name="font">
             <font>
@@ -266,7 +266,7 @@
           </column>
           <column>
            <property name="text">
-            <string>Адрес</string>
+            <string>Address</string>
            </property>
            <property name="font">
             <font>
@@ -279,7 +279,7 @@
           </column>
           <column>
            <property name="text">
-            <string>Документ</string>
+            <string>Document</string>
            </property>
            <property name="font">
             <font>
@@ -315,17 +315,20 @@
   </widget>
   <action name="actionAdd">
    <property name="text">
-    <string>Добавить</string>
+    <string>New</string>
    </property>
   </action>
   <action name="actionClose">
    <property name="text">
-    <string>Закрыть</string>
+    <string>Close</string>
    </property>
   </action>
   <action name="actionHelp">
    <property name="text">
     <string>?</string>
+   </property>
+   <property name="toolTip">
+    <string>Help</string>
    </property>
   </action>
  </widget>

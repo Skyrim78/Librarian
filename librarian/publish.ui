@@ -17,7 +17,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Издательства</string>
+   <string>Publishers</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_3">
@@ -56,7 +56,7 @@
                <item>
                 <widget class="QLabel" name="label">
                  <property name="text">
-                  <string>Название:</string>
+                  <string>Name:</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -75,7 +75,7 @@
                  <item>
                   <widget class="QLabel" name="label_2">
                    <property name="text">
-                    <string>Описание:</string>
+                    <string>Note:</string>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -137,7 +137,7 @@
                   </size>
                  </property>
                  <property name="text">
-                  <string>Удалить</string>
+                  <string>Del</string>
                  </property>
                 </widget>
                </item>
@@ -169,7 +169,7 @@
                   </size>
                  </property>
                  <property name="text">
-                  <string>Сохранить</string>
+                  <string>Save</string>
                  </property>
                 </widget>
                </item>
@@ -188,7 +188,7 @@
                   </size>
                  </property>
                  <property name="text">
-                  <string>Закрыть</string>
+                  <string>Close</string>
                  </property>
                 </widget>
                </item>
@@ -231,6 +231,12 @@
         <property name="sortingEnabled">
          <bool>true</bool>
         </property>
+        <attribute name="horizontalHeaderStretchLastSection">
+         <bool>true</bool>
+        </attribute>
+        <attribute name="verticalHeaderCascadingSectionResizes">
+         <bool>false</bool>
+        </attribute>
         <attribute name="verticalHeaderDefaultSectionSize">
          <number>23</number>
         </attribute>
@@ -241,7 +247,7 @@
         </column>
         <column>
          <property name="text">
-          <string>Название</string>
+          <string>Name</string>
          </property>
          <property name="font">
           <font>
@@ -254,7 +260,7 @@
         </column>
         <column>
          <property name="text">
-          <string>Кол-во книг</string>
+          <string>Number of books</string>
          </property>
          <property name="font">
           <font>
@@ -288,17 +294,20 @@
   </widget>
   <action name="actionAdd">
    <property name="text">
-    <string>Добавить</string>
+    <string>New</string>
    </property>
   </action>
   <action name="actionClose">
    <property name="text">
-    <string>Закрыть</string>
+    <string>Close</string>
    </property>
   </action>
   <action name="actionHelp">
    <property name="text">
     <string>  ?  </string>
+   </property>
+   <property name="toolTip">
+    <string>Help</string>
    </property>
   </action>
  </widget>

@@ -16,7 +16,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Documents</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_3">
@@ -45,35 +45,35 @@
            <item>
             <widget class="QCheckBox" name="checkBox_name">
              <property name="text">
-              <string>Документ</string>
+              <string>Document</string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QCheckBox" name="checkBox_num">
              <property name="text">
-              <string>Номер</string>
+              <string>Number</string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QCheckBox" name="checkBox_date">
              <property name="text">
-              <string>Дата</string>
+              <string>Date</string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QCheckBox" name="checkBox_org">
              <property name="text">
-              <string>Организация</string>
+              <string>Organization</string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QCheckBox" name="checkBox_note">
              <property name="text">
-              <string>Примечание</string>
+              <string>Note</string>
              </property>
             </widget>
            </item>
@@ -108,7 +108,7 @@
              <item>
               <widget class="QLabel" name="label">
                <property name="text">
-                <string>№ документа:</string>
+                <string>№ doc:</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -121,7 +121,7 @@
              <item>
               <widget class="QLabel" name="label_2">
                <property name="text">
-                <string>Дата:</string>
+                <string>Date</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -155,7 +155,7 @@
              <item>
               <widget class="QLabel" name="label_3">
                <property name="text">
-                <string>Название документа:</string>
+                <string>Title of document:</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -172,7 +172,7 @@
              <item>
               <widget class="QLabel" name="label_4">
                <property name="text">
-                <string>Организация:</string>
+                <string>Organization:</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -227,7 +227,7 @@
                 </size>
                </property>
                <property name="text">
-                <string>Сохранить</string>
+                <string>Save</string>
                </property>
               </widget>
              </item>
@@ -246,7 +246,7 @@
                 </size>
                </property>
                <property name="text">
-                <string>Закрыть</string>
+                <string>Close</string>
                </property>
               </widget>
              </item>
@@ -324,7 +324,7 @@
           </column>
           <column>
            <property name="text">
-            <string>Документ</string>
+            <string>Document</string>
            </property>
            <property name="font">
             <font>
@@ -334,7 +334,7 @@
           </column>
           <column>
            <property name="text">
-            <string>Номер</string>
+            <string>Number</string>
            </property>
            <property name="font">
             <font>
@@ -344,7 +344,7 @@
           </column>
           <column>
            <property name="text">
-            <string>Дата</string>
+            <string>Date</string>
            </property>
            <property name="font">
             <font>
@@ -354,7 +354,7 @@
           </column>
           <column>
            <property name="text">
-            <string>Организация</string>
+            <string>Organizations</string>
            </property>
            <property name="font">
             <font>
@@ -364,7 +364,7 @@
           </column>
           <column>
            <property name="text">
-            <string>Примечание</string>
+            <string>Note</string>
            </property>
            <property name="font">
             <font>
@@ -401,7 +401,7 @@
   </widget>
   <action name="actionAdd">
    <property name="text">
-    <string>Добавить</string>
+    <string>New </string>
    </property>
    <property name="font">
     <font>
@@ -411,7 +411,7 @@
   </action>
   <action name="actionClose">
    <property name="text">
-    <string>Закрыть</string>
+    <string>Close</string>
    </property>
    <property name="font">
     <font>
@@ -427,7 +427,7 @@
     <string>?</string>
    </property>
    <property name="toolTip">
-    <string>Помощь</string>
+    <string>Help</string>
    </property>
    <property name="font">
     <font>

@@ -10,6 +10,7 @@
 #include "searchReaders.h"
 //-----------------------------
 #include "import.h"
+#include "search.h"
 
 librarian::librarian(QWidget *parent) :
     QMainWindow(parent),
@@ -38,6 +39,7 @@ librarian::librarian(QWidget *parent) :
     connect(ui->action_biblio, SIGNAL(triggered()), this, SLOT(toBiblio()));
     //------------------
     connect(ui->actionImport, SIGNAL(triggered()), this, SLOT(toImport()));
+    connect(ui->actionSearch, SIGNAL(triggered()), this, SLOT(toSearch()));
 }
 
 librarian::~librarian()
@@ -81,7 +83,6 @@ void librarian::openDataBase(){
     QString db_path = sett.value("db_path").toString();
     db.close();
     QSqlDatabase::removeDatabase(db_path);
-
     QString fileName = QFileDialog::getOpenFileName(this,
          tr("Select database"), "/home", tr("Database Files (*.db3)"));
         sett.setValue("db_path", fileName);
@@ -187,4 +188,9 @@ void librarian::toBiblio(){
 void librarian::toImport(){
     import *im = new import(this);
     im->exec();
+}
+
+void librarian::toSearch(){
+    search *s = new search(this);
+    s->exec();
 }

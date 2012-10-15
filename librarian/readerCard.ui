@@ -16,7 +16,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Карточка читателя</string>
+   <string>Card reader</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0">
@@ -34,7 +34,7 @@
             <item>
              <widget class="QLabel" name="label">
               <property name="text">
-               <string>Фамилия:</string>
+               <string>Surname:</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -47,7 +47,7 @@
             <item>
              <widget class="QLabel" name="label_2">
               <property name="text">
-               <string>Имя:</string>
+               <string>Name:</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -60,7 +60,7 @@
             <item>
              <widget class="QLabel" name="label_3">
               <property name="text">
-               <string>Отчество:</string>
+               <string>Patronymic:</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -77,7 +77,7 @@
             <item>
              <widget class="QLabel" name="label_4">
               <property name="text">
-               <string>Дата рождения:</string>
+               <string>Date of birth:</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -94,7 +94,7 @@
             <item>
              <widget class="QLabel" name="label_5">
               <property name="text">
-               <string>№ билета:</string>
+               <string>Ticket number:</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -124,7 +124,7 @@
             <item>
              <widget class="QLabel" name="label_6">
               <property name="text">
-               <string>Адрес:</string>
+               <string>Address:</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -141,7 +141,7 @@
             <item>
              <widget class="QLabel" name="label_7">
               <property name="text">
-               <string>Телефон:</string>
+               <string>Phone:</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -154,7 +154,7 @@
             <item>
              <widget class="QLabel" name="label_8">
               <property name="text">
-               <string>Документ:</string>
+               <string>Document:</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -196,7 +196,7 @@
                </size>
               </property>
               <property name="text">
-               <string>Удалить</string>
+               <string>Del</string>
               </property>
              </widget>
             </item>
@@ -304,7 +304,7 @@
                </size>
               </property>
               <property name="text">
-               <string>Сохранить</string>
+               <string>Save</string>
               </property>
              </widget>
             </item>
@@ -323,7 +323,7 @@
                </size>
               </property>
               <property name="text">
-               <string>Закрыть</string>
+               <string>Close</string>
               </property>
              </widget>
             </item>
@@ -341,7 +341,7 @@
        </property>
        <widget class="QWidget" name="tab">
         <attribute name="title">
-         <string>Полученные книги</string>
+         <string>Books</string>
         </attribute>
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
@@ -376,17 +376,17 @@
              </column>
              <column>
               <property name="text">
-               <string>Название книги</string>
+               <string>Title of book</string>
               </property>
              </column>
              <column>
               <property name="text">
-               <string>Автор</string>
+               <string>Author</string>
               </property>
              </column>
              <column>
               <property name="text">
-               <string>Дата выдачи</string>
+               <string>Date of receipt</string>
               </property>
              </column>
             </widget>
@@ -408,7 +408,7 @@
                 </size>
                </property>
                <property name="text">
-                <string>Выдать </string>
+                <string>Add book</string>
                </property>
               </widget>
              </item>
@@ -433,7 +433,7 @@
        </widget>
        <widget class="QWidget" name="tab_2">
         <attribute name="title">
-         <string>История</string>
+         <string>History</string>
         </attribute>
         <layout class="QGridLayout" name="gridLayout_3">
          <item row="0" column="0">
@@ -466,22 +466,22 @@
            </column>
            <column>
             <property name="text">
-             <string>Название книги</string>
+             <string>Title of book</string>
             </property>
            </column>
            <column>
             <property name="text">
-             <string>Автор</string>
+             <string>Author</string>
             </property>
            </column>
            <column>
             <property name="text">
-             <string>Дата выдачи</string>
+             <string>Date of receipt</string>
             </property>
            </column>
            <column>
             <property name="text">
-             <string>Дата возврата</string>
+             <string>Date of return</string>
             </property>
            </column>
           </widget>
