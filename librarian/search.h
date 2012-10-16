@@ -10,10 +10,9 @@ class search:public QDialog{
 public:
     search(QWidget *parent = 0);
     Ui::search ui;
+    QString qString;
 
-    QString queryString;
-
-    virtual void closeEvent(QCloseEvent *);
+     virtual void closeEvent(QCloseEvent *);
 protected slots:
     void readSetting();
     void writeSetting();
@@ -22,10 +21,17 @@ protected slots:
 
     void selectPosition();
     void makeQuery();
+    void delPreItemQuery();
     void delItemQuery();
+    void makeQuery_A();
+    void close_makeQuery();
 
     void runQuery();
     void clearQuery();
+
+    QString makeDocResult();
+    void printResult();
+    void previewResult(QPrinter *p);
 };
 
 #endif // SEARCH_H

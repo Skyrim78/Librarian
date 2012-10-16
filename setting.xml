@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <setting>
     <org width="727" x="240" y="159" note="0" email="0" height="568" phone="1" address="1" name="1" face="0"/>
-    <cat width="726" x="278" y="166" height="561"/>
+    <cat width="726" x="280" y="166" height="561"/>
     <pub width="784" x="262" y="165" height="550"/>
     <auth width="612" x="78" y="165" height="562"/>
     <book width="716" x="94" title="1" place="0" y="89" sect="0" isbn="1" in="1" height="517" read="0" pub="0" out="0" auth="1" dost="1" year="0" cat="0"/>
@@ -13,5 +13,5 @@
     <docs_card width="720" x="74" title="1" y="227" isbn="1" coun="1" height="500" auth="1" pub="0" year="1"/>
     <docs_item width="720" x="0" y="0" height="500"/>
     <search_readers width="716" num="0" x="93" date_r="1" y="280" readed="1" height="436" reading="1" ima="1" phone="0" otc="1" address="0" fam="1"/>
-    <search width="896" x="71" y="240" height="487"/>
+    <search width="906" x="30" title="1" place="0" y="267" sect="1" isbn="1" height="460" auth="1" pub="1" year="1" cat="1" lang="1"/>
 </setting>
