@@ -233,13 +233,13 @@
                  <widget class="QPushButton" name="pushButton_add">
                   <property name="minimumSize">
                    <size>
-                    <width>80</width>
+                    <width>100</width>
                     <height>30</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>80</width>
+                    <width>100</width>
                     <height>30</height>
                    </size>
                   </property>
@@ -309,13 +309,13 @@
                  <widget class="QPushButton" name="pushButton_ok">
                   <property name="minimumSize">
                    <size>
-                    <width>80</width>
+                    <width>100</width>
                     <height>30</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>80</width>
+                    <width>100</width>
                     <height>30</height>
                    </size>
                   </property>
@@ -328,13 +328,13 @@
                  <widget class="QPushButton" name="pushButton_cancel">
                   <property name="minimumSize">
                    <size>
-                    <width>80</width>
+                    <width>100</width>
                     <height>30</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>80</width>
+                    <width>100</width>
                     <height>30</height>
                    </size>
                   </property>

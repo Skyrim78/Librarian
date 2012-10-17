@@ -11,6 +11,8 @@
 //-----------------------------
 #include "import.h"
 #include "search.h"
+#include "reports.h"
+
 
 librarian::librarian(QWidget *parent) :
     QMainWindow(parent),
@@ -40,6 +42,12 @@ librarian::librarian(QWidget *parent) :
     //------------------
     connect(ui->actionImport, SIGNAL(triggered()), this, SLOT(toImport()));
     connect(ui->actionSearch, SIGNAL(triggered()), this, SLOT(toSearch()));
+    //---------------?
+    connect(ui->actionExit, SIGNAL(triggered()), this, SLOT(close()));
+    connect(ui->actionAboutQt, SIGNAL(triggered()), this, SLOT(aboutQt()));
+    connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(aboutProg()));
+    //---------reports
+    connect(ui->actionReport1, SIGNAL(triggered()), this, SLOT(toReport1()));
 }
 
 librarian::~librarian()
@@ -193,4 +201,23 @@ void librarian::toImport(){
 void librarian::toSearch(){
     search *s = new search(this);
     s->exec();
+}
+
+void librarian::aboutQt(){
+    QMessageBox qtAbout;
+    qtAbout.aboutQt(this, "About Qt");
+}
+
+void librarian::aboutProg(){
+    QMessageBox progAbout;
+    progAbout.about(this, tr("About librarian"), tr("<p align=\"center\"><b>librarian</b>"
+                                                    "<br>version: 0.1beta"
+                                                    "<br>date: 2012-10-16"
+                                                    "<br>Ev Shevchenko"
+                                                    "<br>e-mail: Skyrim78@yandex.ru"));
+}
+
+void librarian::toReport1(){
+    reports *rep1 = new reports(0, this);
+    rep1->exec();
 }

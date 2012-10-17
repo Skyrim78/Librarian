@@ -25,7 +25,8 @@ SOURCES += main.cpp\
     doc_item.cpp \
     searchReaders.cpp \
     import.cpp \
-    search.cpp
+    search.cpp \
+    report.cpp
 
 HEADERS  += librarian.h \
     organizations.h \
@@ -42,7 +43,8 @@ HEADERS  += librarian.h \
     doc_item.h \
     searchReaders.h \
     import.h \
-    search.h
+    search.h \
+    reports.h
 
 FORMS    += librarian.ui \
     organizations.ui \
@@ -59,4 +61,5 @@ FORMS    += librarian.ui \
     doc_items.ui \
     searchReaders.ui \
     import.ui \
-    search.ui
+    search.ui \
+    reports.ui

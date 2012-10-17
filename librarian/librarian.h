@@ -45,6 +45,12 @@ public slots:
     //--------------
     void toImport();
     void toSearch();
+    //----reports
+    void toReport1();
+
+    //-------
+    void aboutQt();
+    void aboutProg();
 
 };
 

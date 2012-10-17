@@ -101,22 +101,24 @@
     <property name="title">
      <string>Reports</string>
     </property>
-    <addaction name="action_2"/>
-    <addaction name="action_3"/>
-    <addaction name="action_4"/>
-    <addaction name="action_5"/>
+    <addaction name="actionReport1"/>
+    <addaction name="actionReport2"/>
+    <addaction name="actionReport3"/>
+    <addaction name="actionReport4"/>
+    <addaction name="actionReport5"/>
     <addaction name="separator"/>
-    <addaction name="action_7"/>
+    <addaction name="actionReport6"/>
+    <addaction name="actionReport7"/>
    </widget>
    <widget class="QMenu" name="menu_6">
     <property name="title">
      <string>?</string>
     </property>
-    <addaction name="action_8"/>
-    <addaction name="action_9"/>
-    <addaction name="action_Qt"/>
+    <addaction name="actionHelp"/>
+    <addaction name="actionAbout"/>
+    <addaction name="actionAboutQt"/>
     <addaction name="separator"/>
-    <addaction name="action_11"/>
+    <addaction name="actionExit"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_2"/>
@@ -432,7 +434,7 @@
     </font>
    </property>
   </action>
-  <action name="action_2">
+  <action name="actionReport1">
    <property name="text">
     <string>Отчет о поступлении</string>
    </property>
@@ -442,7 +444,7 @@
     </font>
    </property>
   </action>
-  <action name="action_3">
+  <action name="actionReport2">
    <property name="text">
     <string>Отчет о выбытии книг</string>
    </property>
@@ -452,7 +454,7 @@
     </font>
    </property>
   </action>
-  <action name="action_4">
+  <action name="actionReport3">
    <property name="text">
     <string>Книги у читателей</string>
    </property>
@@ -462,7 +464,7 @@
     </font>
    </property>
   </action>
-  <action name="action_5">
+  <action name="actionReport4">
    <property name="text">
     <string>Инвентаризация</string>
    </property>
@@ -472,7 +474,7 @@
     </font>
    </property>
   </action>
-  <action name="action_7">
+  <action name="actionReport6">
    <property name="text">
     <string>Отчет по невозвратам</string>
    </property>
@@ -482,22 +484,22 @@
     </font>
    </property>
   </action>
-  <action name="action_8">
+  <action name="actionHelp">
    <property name="text">
     <string>Help</string>
    </property>
   </action>
-  <action name="action_9">
+  <action name="actionAbout">
    <property name="text">
     <string>About</string>
    </property>
   </action>
-  <action name="action_Qt">
+  <action name="actionAboutQt">
    <property name="text">
-    <string>О Qt</string>
+    <string>About Qt</string>
    </property>
   </action>
-  <action name="action_11">
+  <action name="actionExit">
    <property name="text">
     <string>Exit</string>
    </property>
@@ -520,6 +522,16 @@
     <font>
      <pointsize>10</pointsize>
     </font>
+   </property>
+  </action>
+  <action name="actionReport5">
+   <property name="text">
+    <string>е-Инвентаризация</string>
+   </property>
+  </action>
+  <action name="actionReport7">
+   <property name="text">
+    <string>Неактивные читатели</string>
    </property>
   </action>
  </widget>

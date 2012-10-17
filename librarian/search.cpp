@@ -297,7 +297,7 @@ void search::runQuery(){
     ui.tableWidget_result->resizeColumnsToContents();
     ui.tableWidget_result->horizontalHeader()->setStretchLastSection(true);
     ui.tabWidget->setCurrentIndex(1);
-    qString = QString("<p>SQL [%1]<br>%2</p>").arg(QDateTime::currentDateTime().toString("yyyy-MM-dd hh:ss:mm")).arg(queryString);
+    qString = QString("<p>SQL [%1]<br>%2</p>").arg(QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss")).arg(queryString);
 }
 
 void search::clearQuery(){
