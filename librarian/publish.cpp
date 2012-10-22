@@ -65,7 +65,9 @@ void pub::updatePub(){
         ui.tableWidget_pub->removeRow(a);
     }
     QSqlQuery q("select publish.id, publish.name, "
-                "(select Sum(doc_item.coun) from doc_item, books where doc_item.book = books.id and books.pub = publish.id) "
+                "(select Count(doc_item.id) from doc_item, book_item, books, docs "
+                "where doc_item.book_item = book_item.id and book_item.book = books.id "
+                "and doc_item.doc = docs.id and docs.vid = '1' and books.pub = publish.id)"
                 "from publish ");
     int row = 0;
     while (q.next()){

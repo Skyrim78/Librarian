@@ -26,8 +26,11 @@ b_card::b_card(QList<int> _list, int _item, bool _card, QWidget *parent):QDialog
     while (_c.next()){
         ui.comboBox_cat->addItem(_c.value(0).toString());
     }
+    QSqlQuery _l("select languages.name from languages ");
+    while (_l.next()){
+        ui.comboBox_lang->addItem(_l.value(0).toString());
+    }
     updateCard();
-    qDebug() << list.at(item);
 
     connect(ui.pushButton_close, SIGNAL(clicked()), this, SLOT(closeCard()));
 
@@ -112,55 +115,42 @@ void b_card::updateCard(){
         ui.comboBox_cat->setCurrentIndex(-1);
         ui.comboBox_pub->setCurrentIndex(-1);
         ui.comboBox_sect->setCurrentIndex(-1);
+        ui.comboBox_lang->setCurrentIndex(-1);
         ui.spinBox_year->setValue(QDate::currentDate().year());
         ui.lineEdit_note->clear();
-        ui.lineEdit_place->clear();
         ui.lineEdit_file->clear();
         ui.label_photo->clear();
-        ui.spinBox_in->setValue(0);
-        ui.spinBox_out->setValue(0);
-        ui.spinBox_read->setValue(0);
-        ui.spinBox_dost->setValue(0);
+        ui.lineEdit_file_photo->clear();
         ui.pushButton_del->setEnabled(false);
     } else if (card == false){
         QSqlQuery book(QString("select books.title, books.isbn, sections.name, category.name, publish.name, "
-                               "books.year, books.place, books.lang, books.note, books.photo, books.ebook, "
-                               "(select Sum(doc_item.coun) from docs, doc_item where doc_item.doc = docs.id and docs.vid = 1 and doc_item.book = books.id), "
-                               "(select Sum(doc_item.coun) from docs, doc_item where doc_item.doc = docs.id and docs.vid = 2 and doc_item.book = books.id), "
-                               "(select Count(card_read.id) from card_read where card_read.book = books.id) "
-                               "from books, sections, category, publish "
+                               "books.year, languages.name, books.note, books.photo, books.ebook "
+                               "from books, sections, category, publish, languages "
                                "where publish.id = books.pub and sections.id = books.sect and "
-                               "category.id = books.cat and books.id = \'%1\'").arg(list.at(item)));
+                               "category.id = books.cat and languages.id = books.lang "
+                               "and books.id = \'%1\'").arg(list.at(item)));
         book.next();
         ui.lineEdit_title->setText(book.value(0).toString());
         ui.lineEdit_isbn->setText(book.value(1).toString());
         ui.comboBox_sect->setCurrentIndex(ui.comboBox_sect->findText(book.value(2).toString()));
         ui.comboBox_cat->setCurrentIndex(ui.comboBox_cat->findText(book.value(3).toString()));
         ui.comboBox_pub->setCurrentIndex(ui.comboBox_pub->findText(book.value(4).toString()));
-        ui.spinBox_year->setValue(book.value(5).toInt());
-        ui.lineEdit_place->setText(book.value(6).toString());
-        ui.comboBox_lang->setCurrentIndex(ui.comboBox_lang->findText(book.value(7).toString()));
-        ui.lineEdit_note->setText(book.value(8).toString());
-        ui.lineEdit_file->setText(book.value(10).toString());
-        //photo
-        file_photo = book.value(9).toString();
-        if (!file_photo.isEmpty()){
-            QPixmap pix(file_photo);
+        ui.spinBox_year->setValue(book.value(5).toInt());        
+        ui.comboBox_lang->setCurrentIndex(ui.comboBox_lang->findText(book.value(6).toString()));
+        ui.lineEdit_note->setText(book.value(7).toString());
+        ui.lineEdit_file_photo->setText(book.value(8).toString());
+        ui.lineEdit_file->setText(book.value(9).toString());
+
+        if (!ui.lineEdit_file_photo->text().isEmpty()){
+            QPixmap pix(ui.lineEdit_file_photo->text());
             QPixmap _p(pix.scaled(160, 250, Qt::KeepAspectRatio, Qt::FastTransformation));
             ui.label_photo->setPixmap(_p);
         }
+
         //authors
         updateAuthors(list.at(item));
-        //info
-        ui.spinBox_in->setValue(book.value(11).toInt());
-        ui.spinBox_out->setValue(book.value(12).toInt());
-        ui.spinBox_read->setValue(book.value(13).toInt());
-        ui.spinBox_dost->setValue(ui.spinBox_in->value() - ui.spinBox_out->value() - ui.spinBox_read->value());
-        if (ui.spinBox_in->value() == 0){
-            ui.pushButton_del->setEnabled(true);
-        } else {
-            ui.pushButton_del->setEnabled(false);
-        }
+        //info identifiers
+        updateIdentifiers();
     }
 
     if (item == 0){
@@ -281,24 +271,24 @@ void b_card::addPhoto(){
         QString path(QString("%1/photo/").arg(sett.value("path").toString()));
 
         QString fileName = QFileDialog::getOpenFileName(this,
-             "Open Image", "/home/jana", tr("Image Files (*.png *.jpg *.bmp)"));
+             "Open Image", "/home", tr("Image Files (*.png *.jpg *.bmp)"));
 
-        file_photo = QString("%1%2%3").arg(path).arg(list.at(item)).arg(fileName.right(4));
+        ui.lineEdit_file_photo->setText(QString("%1%2%3").arg(path).arg(list.at(item)).arg(fileName.right(4)));
 
         QFile _f(fileName);
-        _f.copy(fileName, file_photo);
-
-        QPixmap pix(file_photo);
-        QPixmap _p(pix.scaled(160, 250, Qt::KeepAspectRatio, Qt::FastTransformation));
-        ui.label_photo->setPixmap(_p);
+        if (_f.copy(fileName, ui.lineEdit_file_photo->text()) == true){
+            QPixmap pix(ui.lineEdit_file_photo->text());
+            QPixmap _p(pix.scaled(160, 250, Qt::KeepAspectRatio, Qt::FastTransformation));
+            ui.label_photo->setPixmap(_p);
+        }
     }
 }
 
 void b_card::delPhoto(){
-    if (!file_photo.isEmpty()){
-        QFile _f(file_photo);
+    if (!ui.lineEdit_file_photo->text().isEmpty()){
+        QFile _f(ui.lineEdit_file_photo->text());
         _f.remove();
-        file_photo.clear();
+        ui.lineEdit_file_photo->clear();
         ui.label_photo->clear();
     }
 }
@@ -314,12 +304,13 @@ void b_card::addEBook(){
 
         QString fileName = QFileDialog::getOpenFileName(this,
              "Open Book", "/home/", "eBook Files (*.pdf *.djvu *.txt *.doc)");
-        QFileInfo fi(fileName);
+        if (fileName.size() > 0){
+            QFileInfo fi(fileName);
+            ui.lineEdit_file->setText(QString("%1%2.%3").arg(path).arg(list.at(item)).arg(fi.completeSuffix()));
 
-        ui.lineEdit_file->setText(QString("%1%2.%3").arg(path).arg(list.at(item)).arg(fi.completeSuffix()));
-
-        QFile _f(fileName);
-        _f.copy(fileName, ui.lineEdit_file->text());
+            QFile _f(fileName);
+            _f.copy(fileName, ui.lineEdit_file->text());
+        }
     }
 }
 
@@ -331,13 +322,14 @@ void b_card::delEBook(){
     }
 }
 
-void b_card::openBook(){
+void b_card::openBook(){ ////////???????????????????????
     if (!ui.lineEdit_file->text().isEmpty()){
         QDesktopServices::openUrl(ui.lineEdit_file->text());
     }
 }
 
 void b_card::saveCard(){
+    qDebug() << file_photo;
     QSqlQuery _s(QString("select sections.id from sections where sections.name = \'%1\' ")
                  .arg(ui.comboBox_sect->currentText()));
     _s.next();
@@ -347,26 +339,32 @@ void b_card::saveCard(){
     QSqlQuery _p(QString("select publish.id from publish where publish.name = \'%1\' ")
                  .arg(ui.comboBox_pub->currentText()));
     _p.next();
+    QSqlQuery _l(QString("select languages.id from languages where languages.name = \'%1\' ")
+                 .arg(ui.comboBox_lang->currentText()));
+    _l.next();
 
     QSqlQuery upCard(QString("update books set title = \'%1\', isbn = \'%2\', sect = \'%3\', cat = \'%4\', "
-                         "pub = \'%5\', year = \'%6\', lang = \'%7\', place = \'%8\', note = \'%9\', "
-                         "photo = \'%10\', ebook = \'%11\' where books.id = \'%12\' ")
+                         "pub = \'%5\', year = \'%6\', lang = \'%7\', note = \'%8\', "
+                         "photo = \'%9\', ebook = \'%10\' where books.id = \'%11\' ")
                  .arg(ui.lineEdit_title->text())
                  .arg(ui.lineEdit_isbn->text())
                  .arg(_s.value(0).toInt())
                  .arg(_c.value(0).toInt())
                  .arg(_p.value(0).toInt())
                  .arg(ui.spinBox_year->value())
-                 .arg(ui.comboBox_lang->currentText())
-                 .arg(ui.lineEdit_place->text())
+                 .arg(_l.value(0).toInt())
                  .arg(ui.lineEdit_note->text())
-                 .arg(file_photo)
+                 .arg(ui.lineEdit_file_photo->text())
                  .arg(ui.lineEdit_file->text())
                  .arg(list.at(item)));
     upCard.exec();
     if (upCard.lastError().text().size() == 1) {
         ui.lineEdit_status->setText("Сохранено...");
-        addCard();
+        if (card == true){
+            addCard();
+        } else if (card == false){
+            updateCard();
+        }
     } else {
         ui.lineEdit_status->setText(upCard.lastError().text());
     }
@@ -399,4 +397,22 @@ void b_card::addCard(){
     item = 0;
     card = true;
     updateCard();
+}
+
+void b_card::updateIdentifiers(){
+    for (int x = ui.tableWidget_identifiers->rowCount(); x >= 0; x--){
+        ui.tableWidget_identifiers->removeRow(x);
+    }
+    QSqlQuery qIdentifiers(QString("select book_item.identifier from book_item where book_item.id_book = \'%1\'")
+                           .arg(list.at(item)));
+    int row = 0;
+    while (qIdentifiers.next()){
+        QTableWidgetItem *item = new QTableWidgetItem(qIdentifiers.value(0).toString());
+        ui.tableWidget_identifiers->setItem(row, 0, item);
+    }
+    ui.spinBox_total->setValue(ui.tableWidget_identifiers->rowCount());
+}
+
+void b_card::lookHistoryBook(){
+
 }

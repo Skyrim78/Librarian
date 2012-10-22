@@ -99,7 +99,7 @@ void librarian::openDataBase(){
 
 bool librarian::testDataBase(){
     QStringList listA;
-    listA << "authors" << "book_auth" << "books" << "card_read" << "category" << "doc_item" << "docs"
+    listA << "authors" << "book_auth" << "book_item"<< "books" << "card_read" << "category" << "doc_item" << "docs"
           << "languages" << "organizations" << "publish" << "readers" << "sections" << "sqlite_sequence";
     listA.sort();
     QStringList listB;

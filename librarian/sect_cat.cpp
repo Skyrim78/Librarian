@@ -130,6 +130,7 @@ void sect_cat::saveSect(){
     }
     updateSect();
     updateCat();
+    ui.lineEdit_sect_name->clear();
 }
 
 void sect_cat::delSect(){
@@ -155,7 +156,9 @@ void sect_cat::updateCat(){
         ui.tableWidget_cat->removeRow(a);
     }
     QString query("select category.id, sections.name, category.name, "
-                  "(select Sum(doc_item.coun) from doc_item, books where doc_item.book = books.id and books.cat = category.id) "
+                  "(select Count(doc_item.id) from doc_item, book_item, books, docs "
+                  "where doc_item.book_item = book_item.id and book_item.book = books.id "
+                  "and doc_item.doc = docs.id and docs.vid = '1' and books.cat = category.id) "
                   "from category, sections where category.sect = sections.id ");
 
     if (sectID > 0){
@@ -172,6 +175,8 @@ void sect_cat::updateCat(){
         }
         row++;
     }
+    ui.tableWidget_cat->resizeColumnsToContents();
+    ui.tableWidget_cat->horizontalHeader()->setStretchLastSection(true);
 }
 
 void sect_cat::addCat(){
@@ -230,6 +235,8 @@ void sect_cat::saveCat(){
     }
     updateCat();
     updateSect();
+    ui.comboBox_sect->setCurrentIndex(-1);
+    ui.lineEdit_cat_name->clear();
 }
 
 void sect_cat::delCat(){

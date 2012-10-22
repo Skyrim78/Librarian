@@ -245,11 +245,6 @@
           </column>
           <column>
            <property name="text">
-            <string>Place</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
             <string>Received</string>
            </property>
           </column>

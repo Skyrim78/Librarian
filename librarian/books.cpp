@@ -121,7 +121,7 @@ void books::readBook(){
         ui.tableWidget_book->removeRow(a);
     }
     QSqlQuery _b("select books.id, books.isbn, books.title, sections.name, category.name, publish.name, "
-                   "books.year, books.place "
+                   "books.year "
                    "from books, sections, category, publish "
                    "where sections.id = books.sect and category.id = books.cat and publish.id = books.pub ");
     int row = 0;
@@ -140,7 +140,7 @@ void books::readBook(){
         QTableWidgetItem *itemAuth = new QTableWidgetItem(auth);
         ui.tableWidget_book->setItem(row, 3, itemAuth);
 
-        for (int col = 4; col < 9; col++){
+        for (int col = 4; col < 8; col++){
             QTableWidgetItem *item = new QTableWidgetItem(_b.value(col-1).toString());
             ui.tableWidget_book->setItem(row, col, item);
         }

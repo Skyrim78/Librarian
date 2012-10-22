@@ -4,15 +4,15 @@
     <cat width="726" x="280" y="166" height="561"/>
     <pub width="784" x="262" y="165" height="550"/>
     <auth width="612" x="78" y="165" height="562"/>
-    <book width="716" x="96" title="1" place="0" y="112" sect="0" isbn="1" in="1" height="517" read="0" pub="0" out="0" auth="1" dost="1" year="0" cat="0"/>
-    <bcard width="720" x="152" y="137" height="359"/>
+    <book width="716" x="98" title="1" place="0" y="135" sect="0" isbn="1" in="1" height="517" read="0" pub="0" out="0" auth="1" dost="1" year="0" cat="0"/>
+    <bcard width="720" x="156" y="183" height="359"/>
     <readers width="871" num="0" x="46" date_r="1" y="233" doc="0" height="475" ima="1" phone="1" otc="1" address="1" fam="1"/>
     <read_card width="763" x="70" y="230" height="497"/>
     <read_book width="606" x="37" y="112" height="516"/>
-    <docs width="759" num="1" x="71" y="163" note="1" date_d="1" height="564" name="1" org="1"/>
-    <docs_card width="720" x="74" title="1" y="227" isbn="1" coun="1" height="500" auth="1" pub="0" year="1"/>
+    <docs width="759" num="1" x="584" y="51" note="1" date_d="1" height="564" name="1" org="1"/>
+    <docs_card width="720" x="590" title="1" y="105" isbn="1" coun="1" height="500" auth="1" pub="1" year="1"/>
     <docs_item width="720" x="0" y="0" height="500"/>
     <search_readers width="716" num="0" x="93" date_r="1" y="280" readed="1" height="436" reading="1" ima="1" phone="0" otc="1" address="0" fam="1"/>
-    <search width="906" x="30" title="1" place="0" y="267" sect="1" isbn="1" height="460" auth="1" pub="1" year="1" cat="1" lang="1"/>
+    <search width="906" x="32" title="1" place="0" y="267" sect="1" isbn="1" height="460" auth="1" pub="1" year="1" cat="1" lang="1"/>
     <reports width="972" x="83" y="147" height="580"/>
 </setting>

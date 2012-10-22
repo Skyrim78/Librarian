@@ -134,7 +134,12 @@ void reports::makeReport(){
                          .arg(ui.dateEdit_to->date().toString("yyyy-MM-dd")));
         }
     } else if (report == 2){
-
+        query.append("select books.id, books.isbn, books.title, authors.name_k, publish.name, books.year "
+                     "(select Count(card_read.id) from card_read where card_read.book = books.id) "
+                     "from books, publish, authors, book_auth "
+                     "where book_auth.book = books.id and book_auth.auth = authors.id and publish.id = books.pub ");
+    } else if (report == 3){
+        query.append("");
     }
 
 }

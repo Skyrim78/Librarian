@@ -204,7 +204,7 @@
         </column>
         <column>
          <property name="text">
-          <string>Name</string>
+          <string>Sections</string>
          </property>
          <property name="font">
           <font>
@@ -403,7 +403,7 @@
         </column>
         <column>
          <property name="text">
-          <string>Title of book</string>
+          <string>Category</string>
          </property>
          <property name="font">
           <font>

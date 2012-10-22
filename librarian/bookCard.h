@@ -38,6 +38,9 @@ protected slots:
     void delEBook();
     void openBook();
 
+    void updateIdentifiers();
+    void lookHistoryBook();
+
     void saveCard();
     void deleteCard();
     void closeCard();

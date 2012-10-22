@@ -119,7 +119,7 @@ void docCard::readDoc(){
     for (int a = ui.tableWidget_book->rowCount(); a >=0; a--){
         ui.tableWidget_book->removeRow(a);
     }
-    QSqlQuery queryA(QString("select doc_item.id, doc_item.book, books.isbn, books.title, publish.name, books.year, doc_item.coun "
+    QSqlQuery queryA(QString("select doc_item.id, doc_item.book, books.isbn, books.title, publish.name, books.year, doc_item.identifier "
                              "from doc_item, books, publish "
                              "where books.id = doc_item.book and publish.id = books.pub and doc_item.doc = \'%1\' ").arg(list.at(curr)));
     int row = 0;

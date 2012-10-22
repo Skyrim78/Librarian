@@ -259,7 +259,7 @@
             <item>
              <widget class="QCheckBox" name="checkBox_count">
               <property name="text">
-               <string>Quantity</string>
+               <string>Identifier</string>
               </property>
              </widget>
             </item>
@@ -338,7 +338,7 @@
          </column>
          <column>
           <property name="text">
-           <string>Quantity</string>
+           <string>Identifier</string>
           </property>
          </column>
         </widget>
@@ -359,6 +359,29 @@
        </item>
        <item>
         <widget class="QLineEdit" name="lineEdit_note"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>Total:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="spinBox_total">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::NoButtons</enum>
+         </property>
+         <property name="maximum">
+          <number>9999</number>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
