@@ -155,7 +155,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit_name"/>
+        <widget class="QLineEdit" name="lineEdit_title"/>
        </item>
       </layout>
      </item>
@@ -173,6 +173,19 @@
        </item>
        <item>
         <widget class="QLineEdit" name="lineEdit_identifier"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Place:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_place"/>
        </item>
        <item>
         <spacer name="horizontalSpacer_3">

@@ -764,7 +764,58 @@
               </widget>
              </item>
              <item>
-              <widget class="QTableWidget" name="tableWidget_book_history"/>
+              <widget class="QTableWidget" name="tableWidget_book_history">
+               <property name="focusPolicy">
+                <enum>Qt::NoFocus</enum>
+               </property>
+               <property name="editTriggers">
+                <set>QAbstractItemView::NoEditTriggers</set>
+               </property>
+               <property name="tabKeyNavigation">
+                <bool>true</bool>
+               </property>
+               <property name="showDropIndicator" stdset="0">
+                <bool>true</bool>
+               </property>
+               <property name="alternatingRowColors">
+                <bool>true</bool>
+               </property>
+               <property name="selectionMode">
+                <enum>QAbstractItemView::SingleSelection</enum>
+               </property>
+               <property name="selectionBehavior">
+                <enum>QAbstractItemView::SelectRows</enum>
+               </property>
+               <property name="sortingEnabled">
+                <bool>false</bool>
+               </property>
+               <attribute name="verticalHeaderCascadingSectionResizes">
+                <bool>true</bool>
+               </attribute>
+               <attribute name="verticalHeaderDefaultSectionSize">
+                <number>23</number>
+               </attribute>
+               <column>
+                <property name="text">
+                 <string>id</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>doc</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>Date</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>Note</string>
+                </property>
+               </column>
+              </widget>
              </item>
             </layout>
            </item>

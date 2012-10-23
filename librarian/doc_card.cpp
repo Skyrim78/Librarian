@@ -35,7 +35,6 @@ docCard::docCard(QList<int> _list, int _curr, QWidget *parent):QDialog(parent){
     connect(ui.pushButton_toLast, SIGNAL(clicked()), this, SLOT(toLast()));
     connect(ui.pushButton_toNext, SIGNAL(clicked()),this, SLOT(toNext()));
     connect(ui.pushButton_toPrev, SIGNAL(clicked()), this, SLOT(toPrev()));
-
 }
 
 void docCard::readSetting(){
@@ -119,9 +118,9 @@ void docCard::readDoc(){
     for (int a = ui.tableWidget_book->rowCount(); a >=0; a--){
         ui.tableWidget_book->removeRow(a);
     }
-    QSqlQuery queryA(QString("select doc_item.id, doc_item.book, books.isbn, books.title, publish.name, books.year, doc_item.identifier "
-                             "from doc_item, books, publish "
-                             "where books.id = doc_item.book and publish.id = books.pub and doc_item.doc = \'%1\' ").arg(list.at(curr)));
+    QSqlQuery queryA(QString("select doc_item.id, book_item.book, books.isbn, books.title, publish.name, books.year, book_item.identifier "
+                             "from book_item, doc_item, books, publish "
+                             "where book_item.id = doc_item.book_item and books.id = book_item.book and publish.id = books.pub and doc_item.doc = \'%1\' ").arg(list.at(curr)));
     int row = 0;
     while (queryA.next()){
         ui.tableWidget_book->insertRow(row);
@@ -144,7 +143,12 @@ void docCard::readDoc(){
             ui.tableWidget_book->setItem(row, col, item);
         }
         row++;
+        ui.tableWidget_book->resizeColumnsToContents();
+        ui.tableWidget_book->horizontalHeader()->setStretchLastSection(true);
     }
+    //total
+    ui.spinBox_total->setValue(ui.tableWidget_book->rowCount());
+
     if (list.size() == 0){
         ui.pushButton_toFirst->setEnabled(false);
         ui.pushButton_toFirst->setEnabled(false);
@@ -185,10 +189,17 @@ void docCard::saveDoc(){
 }
 
 void docCard::deleteDoc(){
-    QSqlQuery query(QString("delete from docs where docs.id = \'%1\'").arg(list.at(curr)));
-    query.exec();
-    QSqlQuery queryDel(QString("delete from doc_item where doc_item.doc = \'%1\' ").arg(list.at(curr)));
-    queryDel.exec();
+    QSqlQuery queryA(QString("select doc_item.book_item from doc_item where doc_item.doc = \'%1\'")
+                     .arg(list.at(curr)));
+    while (queryA.next()){
+        QSqlQuery delItems(QString("delete from book_item where book_item.id = \'%1\'")
+                           .arg(queryA.value(0).toInt()));
+        delItems.exec();
+    }
+    QSqlQuery queryB(QString("delete from doc_item where doc_item.doc = \'%1\' ").arg(list.at(curr)));
+    queryB.exec();
+    QSqlQuery queryC(QString("delete from docs where docs.id = \'%1\'").arg(list.at(curr)));
+    queryC.exec();
     close();
 }
 

@@ -10,6 +10,9 @@ b_card::b_card(QList<int> _list, int _item, bool _card, QWidget *parent):QDialog
     ui.tableWidget_auth->setColumnHidden(0, true);
     ui.tableWidget_auth->setColumnHidden(1, true);
 
+    ui.tableWidget_book_history->setColumnHidden(0, true);
+    ui.tableWidget_book_history->setColumnHidden(1, true);
+
     QSqlQuery _s("select sections.name from sections ");
     while (_s.next()){
         ui.comboBox_sect->addItem(_s.value(0).toString());
@@ -51,6 +54,7 @@ b_card::b_card(QList<int> _list, int _item, bool _card, QWidget *parent):QDialog
     connect(ui.pushButton_file_open, SIGNAL(clicked()), this, SLOT(openBook()));
 
     connect(ui.pushButton_save, SIGNAL(clicked()), this, SLOT(saveCard()));
+    connect(ui.tableWidget_identifiers, SIGNAL(clicked(QModelIndex)), this, SLOT(lookHistoryBook()));
 }
 
 void b_card::readSetting(){
@@ -322,7 +326,7 @@ void b_card::delEBook(){
     }
 }
 
-void b_card::openBook(){ ////////???????????????????????
+void b_card::openBook(){
     if (!ui.lineEdit_file->text().isEmpty()){
         QDesktopServices::openUrl(ui.lineEdit_file->text());
     }
@@ -403,16 +407,50 @@ void b_card::updateIdentifiers(){
     for (int x = ui.tableWidget_identifiers->rowCount(); x >= 0; x--){
         ui.tableWidget_identifiers->removeRow(x);
     }
-    QSqlQuery qIdentifiers(QString("select book_item.identifier from book_item where book_item.id_book = \'%1\'")
+    QSqlQuery qIdentifiers(QString("select book_item.identifier from book_item where book_item.book = \'%1\'")
                            .arg(list.at(item)));
     int row = 0;
     while (qIdentifiers.next()){
+        ui.tableWidget_identifiers->insertRow(row);
         QTableWidgetItem *item = new QTableWidgetItem(qIdentifiers.value(0).toString());
         ui.tableWidget_identifiers->setItem(row, 0, item);
+        row++;
     }
     ui.spinBox_total->setValue(ui.tableWidget_identifiers->rowCount());
 }
 
 void b_card::lookHistoryBook(){
+    //clear table
+    for (int x = ui.tableWidget_book_history->rowCount(); x >= 0; x--){
+        ui.tableWidget_book_history->removeRow(x);
+    }
+    //look docs
+    QSqlQuery lookDoc(QString("select docs.id, docs.date_d, docs.name, docs.num, organizations.name "
+                              "from docs, doc_item, book_item, organizations "
+                              "where organizations.id = docs.org and docs.id = doc_item.doc and "
+                              "doc_item.book_item = book_item.id and book_item.identifier = \'%1\'")
+                      .arg(ui.tableWidget_identifiers->item(ui.tableWidget_identifiers->currentRow(), 0)->text()));
+    int row = 0;
+    while (lookDoc.next()){
+        ui.tableWidget_book_history->insertRow(row);
+        QString res(QString("%1 / №%2 / %3")
+                    .arg(lookDoc.value(2).toString())
+                    .arg(lookDoc.value(3).toString())
+                    .arg(lookDoc.value(4).toString()));
+        QTableWidgetItem *id = new QTableWidgetItem(lookDoc.value(0).toString());
+        ui.tableWidget_book_history->setItem(row, 0, id);
+        QTableWidgetItem *doc = new QTableWidgetItem("d");
+        ui.tableWidget_book_history->setItem(row, 1, doc);
+        QTableWidgetItem *dat = new QTableWidgetItem(lookDoc.value(1).toString());
+        ui.tableWidget_book_history->setItem(row, 2, dat);
+        QTableWidgetItem *note = new QTableWidgetItem(res);
+        ui.tableWidget_book_history->setItem(row, 3, note);
+        row++;
+    }
+    // look readers
 
+    //
+    ui.tableWidget_book_history->sortByColumn(2);
+    ui.tableWidget_book_history->resizeColumnsToContents();
+    ui.tableWidget_book_history->horizontalHeader()->setStretchLastSection(true);
 }
