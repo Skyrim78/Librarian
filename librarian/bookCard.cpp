@@ -128,7 +128,7 @@ void b_card::updateCard(){
         ui.pushButton_del->setEnabled(false);
     } else if (card == false){
         QSqlQuery book(QString("select books.title, books.isbn, sections.name, category.name, publish.name, "
-                               "books.year, languages.name, books.note, books.photo, books.ebook "
+                               "books.year, languages.name, books.note, books.photo, books.ebook, books.place "
                                "from books, sections, category, publish, languages "
                                "where publish.id = books.pub and sections.id = books.sect and "
                                "category.id = books.cat and languages.id = books.lang "
@@ -144,6 +144,7 @@ void b_card::updateCard(){
         ui.lineEdit_note->setText(book.value(7).toString());
         ui.lineEdit_file_photo->setText(book.value(8).toString());
         ui.lineEdit_file->setText(book.value(9).toString());
+        ui.lineEdit_place->setText(book.value(10).toString());
 
         if (!ui.lineEdit_file_photo->text().isEmpty()){
             QPixmap pix(ui.lineEdit_file_photo->text());
@@ -349,7 +350,7 @@ void b_card::saveCard(){
 
     QSqlQuery upCard(QString("update books set title = \'%1\', isbn = \'%2\', sect = \'%3\', cat = \'%4\', "
                          "pub = \'%5\', year = \'%6\', lang = \'%7\', note = \'%8\', "
-                         "photo = \'%9\', ebook = \'%10\' where books.id = \'%11\' ")
+                             "photo = \'%9\', ebook = \'%10\', place = \'%11\' where books.id = \'%12\' ")
                  .arg(ui.lineEdit_title->text())
                  .arg(ui.lineEdit_isbn->text())
                  .arg(_s.value(0).toInt())
@@ -360,6 +361,7 @@ void b_card::saveCard(){
                  .arg(ui.lineEdit_note->text())
                  .arg(ui.lineEdit_file_photo->text())
                  .arg(ui.lineEdit_file->text())
+                 .arg(ui.lineEdit_place->text())
                  .arg(list.at(item)));
     upCard.exec();
     if (upCard.lastError().text().size() == 1) {
@@ -410,13 +412,39 @@ void b_card::updateIdentifiers(){
     QSqlQuery qIdentifiers(QString("select book_item.identifier from book_item where book_item.book = \'%1\'")
                            .arg(list.at(item)));
     int row = 0;
+    int indexUnavaliable = 0;
     while (qIdentifiers.next()){
         ui.tableWidget_identifiers->insertRow(row);
         QTableWidgetItem *item = new QTableWidgetItem(qIdentifiers.value(0).toString());
         ui.tableWidget_identifiers->setItem(row, 0, item);
+
+        QSqlQuery lookRead(QString("select card_read.id from card_read, book_item "
+                                   "where card_read.book_item = book_item.id and card_read.date_e is null and book_item.identifier = \'%1\'")
+                           .arg(qIdentifiers.value(0).toString()));
+        lookRead.next();        
+       bool indexR = lookRead.record().value(0).toBool();
+        QSqlQuery lookDoc(QString("select docs.id from docs, doc_item, book_item "
+                                  "where docs.id = doc_item.doc and docs.vid = 2 and "
+                                  "doc_item.book_item = book_item.id and book_item.identifier = \'%1\'")
+                          .arg(qIdentifiers.value(0).toString()));
+        lookDoc.next();
+        bool indexD = lookDoc.record().value(0).toBool();
+
+        if (indexR == false and indexD == false){
+            ui.tableWidget_identifiers->item(row, 0)->setBackgroundColor(Qt::green);
+        } else if (indexR == true or indexD == true) {
+            ui.tableWidget_identifiers->item(row, 0)->setBackgroundColor(Qt::red);
+            indexUnavaliable++;
+        }
+        ui.tableWidget_identifiers->item(row, 0)->setTextColor(Qt::white);
         row++;
     }
     ui.spinBox_total->setValue(ui.tableWidget_identifiers->rowCount());
+    ui.spinBox_dost->setValue(row - indexUnavaliable);
+    //clear table hisrory
+    for (int x = ui.tableWidget_book_history->rowCount(); x >= 0; x--){
+        ui.tableWidget_book_history->removeRow(x);
+    }
 }
 
 void b_card::lookHistoryBook(){
@@ -433,7 +461,7 @@ void b_card::lookHistoryBook(){
     int row = 0;
     while (lookDoc.next()){
         ui.tableWidget_book_history->insertRow(row);
-        QString res(QString("%1 / №%2 / %3")
+        QString res(QString("Документ: %1 / №%2 / %3")
                     .arg(lookDoc.value(2).toString())
                     .arg(lookDoc.value(3).toString())
                     .arg(lookDoc.value(4).toString()));
@@ -448,9 +476,33 @@ void b_card::lookHistoryBook(){
         row++;
     }
     // look readers
+    QSqlQuery lookRead(QString("select readers.id, card_read.date_s, readers.fam, readers.ima, readers.otc, card_read.date_e "
+                               "from readers, card_read, book_item "
+                               "where card_read.read = readers.id and card_read.book_item = book_item.id and book_item.identifier = \'%1\'")
+                       .arg(ui.tableWidget_identifiers->item(ui.tableWidget_identifiers->currentRow(), 0)->text()));
+    while (lookRead.next()){
+        ui.tableWidget_book_history->insertRow(row);
+        QString resA(QString("Читатель: %1 %2 %3 / Возврат: ")
+                     .arg(lookRead.value(2).toString())
+                     .arg(lookRead.value(3).toString())
+                     .arg(lookRead.value(4).toString()));
+        if (lookRead.value(5).toString().isEmpty()){
+            resA.append(QString("Нет"));
+        } else {
+            resA.append(QString("%1").arg(lookRead.value(5).toString()));
+        }
+        QTableWidgetItem *id = new QTableWidgetItem(lookRead.value(0).toString());
+        ui.tableWidget_book_history->setItem(row, 0, id);
+        QTableWidgetItem *doc = new QTableWidgetItem("r");
+        ui.tableWidget_book_history->setItem(row, 1, doc);
+        QTableWidgetItem *dat = new QTableWidgetItem(lookRead.value(1).toString());
+        ui.tableWidget_book_history->setItem(row, 2, dat);
+        QTableWidgetItem *note = new QTableWidgetItem(resA);
+        ui.tableWidget_book_history->setItem(row, 3, note);
+    }
 
     //
-    ui.tableWidget_book_history->sortByColumn(2);
+    ui.tableWidget_book_history->sortByColumn(2, Qt::AscendingOrder);
     ui.tableWidget_book_history->resizeColumnsToContents();
     ui.tableWidget_book_history->horizontalHeader()->setStretchLastSection(true);
 }

@@ -154,6 +154,16 @@
               </font>
              </property>
             </column>
+            <column>
+             <property name="text">
+              <string>doc</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>read</string>
+             </property>
+            </column>
            </widget>
           </item>
          </layout>

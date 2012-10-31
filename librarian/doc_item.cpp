@@ -5,8 +5,23 @@ docItem::docItem(QList<int> _list, int _curr, int _doc, QWidget *parent):QDialog
     list = _list;
     curr = _curr;
     doc = _doc;
+
+    QSqlQuery _v(QString("select docs.vid from docs where docs.id = \'%1\'").arg(doc));
+    _v.next();
+    vid = _v.value(0).toInt();
+
     ui.spinBox_id_book->hide();
-    ui.tableWidget_res->setColumnHidden(0, true);
+    ui.tableWidget_res->setColumnHidden(0, true);    
+    ui.tableWidget_res->setColumnHidden(7, true);
+    ui.tableWidget_res->setColumnHidden(8, true);
+
+    if (vid == 1){
+        ui.tableWidget_res->setColumnHidden(6, true);
+        ui.radioButton_identifier->hide();
+    } else if (vid == 2){
+        ui.lineEdit_place->hide();
+        ui.label_3->hide();
+    }
 
     openItem();
 
@@ -69,49 +84,73 @@ void docItem::searchBook(const QString text){
     for (int a = ui.tableWidget_res->rowCount(); a >= 0; a--){
         ui.tableWidget_res->removeRow(a);
     }
-    QString search("select books.id, books.isbn, books.title, publish.name, books.year "
-                   "from books, publish where publish.id = books.pub and ");
-    if (ui.radioButton_isbn->isChecked()){
-        search.append(QString("books.isbn like \'%1%\' ").arg(text));
-    } else if (ui.radioButton_title->isChecked()){
-        search.append(QString("books.title like \'%1%\' ").arg(text));
-    }
-    QSqlQuery query(search);
-    int row = 0;
-    while(query.next()){
-        ui.tableWidget_res->insertRow(row);
-        for (int col = 0; col < 3; col++){
-            QTableWidgetItem *item = new QTableWidgetItem(query.value(col).toString());
-            ui.tableWidget_res->setItem(row, col, item);
+    if (vid == 1){
+        QString search("select books.id, books.isbn, books.title, authors.name_k, publish.name, books.year "
+                       "from books, publish, authors, book_auth "
+                       "where book_auth.auth = authors.id and book_auth.book = books.id and publish.id = books.pub and ");
+        if (ui.radioButton_isbn->isChecked()){
+            search.append(QString("books.isbn like \'%1%\' ").arg(text));
+        } else if (ui.radioButton_title->isChecked()){
+            search.append(QString("books.title like \'%1%\' ").arg(text));
         }
-        for (int col = 4; col < 6; col++){
-            QTableWidgetItem *item = new QTableWidgetItem(query.value(col-1).toString());
-            ui.tableWidget_res->setItem(row, col, item);
+        QSqlQuery query(search);
+        int row = 0;
+        while(query.next()){
+            ui.tableWidget_res->insertRow(row);
+            for (int col = 0; col < 6; col++){
+                QTableWidgetItem *item = new QTableWidgetItem(query.value(col).toString());
+                ui.tableWidget_res->setItem(row, col, item);
+            }
+            row++;
         }
-        //***auth
-        QSqlQuery queryAuth(QString("select authors.name_k from authors, book_auth "
-                                    "where book_auth.auth = authors.id and book_auth.book = \'%1\' ").arg(query.value(0).toString()));
-        QString authBook;
-        while (queryAuth.next()){
-            authBook.append(QString("%1 ").arg(queryAuth.value(0).toString()));
+    } else if (vid == 2){
+        QString search("select book_item.id, books.isbn, books.title, authors.name_k, publish.name, books.year,  book_item.identifier, "
+                       "(select doc_item.id from docs, doc_item where docs.vid = '2' and doc_item.doc = docs.id and doc_item.book_item = book_item.id), "
+                       "(select card_read.id from card_read where (card_read.date_e is null) and card_read.book_item = book_item.id) "
+                       "from books, book_item, authors, book_auth, publish "
+                       "where books.id = book_item.book and book_auth.book = books.id and book_auth.auth = authors.id "
+                       "and books.pub = publish.id and ");
+        if (ui.radioButton_title->isChecked()){
+            search.append(QString("books.title LIKE  \'%%1%\' ").arg(text));
+        } else if (ui.radioButton_isbn->isChecked()){
+            search.append(QString("books.isbn LIKE  \'%%1%\' ").arg(text));
+        } else if (ui.radioButton_identifier->isChecked()){
+            search.append(QString("book_item.identifier LIKE \'%%1%\' ").arg(text));
         }
-        QTableWidgetItem *itemAuth = new QTableWidgetItem(authBook);
-        ui.tableWidget_res->setItem(row, 3, itemAuth);
-        //*******
-        row++;
+        QSqlQuery query(search);
+        int row = 0;
+        while (query.next()){
+            ui.tableWidget_res->insertRow(row);
+            for (int col = 0; col <9; col++){
+                QTableWidgetItem *item = new QTableWidgetItem(query.value(col).toString());
+                ui.tableWidget_res->setItem(row, col, item);
+            }
+            row++;
+        }
+        // clearing
+        for (int a = ui.tableWidget_res->rowCount()-1; a>=0; a--){
+            if (!ui.tableWidget_res->item(a, 7)->text().isEmpty() or
+                    !ui.tableWidget_res->item(a, 8)->text().isEmpty()){
+                ui.tableWidget_res->removeRow(a);
+            }
+        }
     }
 }
+
 
 void docItem::selectBook(){
     ui.spinBox_id_book->setValue(ui.tableWidget_res->item(ui.tableWidget_res->currentRow(), 0)->text().toInt());
     ui.lineEdit_title->setText(ui.tableWidget_res->item(ui.tableWidget_res->currentRow(), 2)->text());
+    if (vid == 2){
+        ui.lineEdit_identifier->setText(ui.tableWidget_res->item(ui.tableWidget_res->currentRow(), 6)->text());
+    }
 }
 
 void docItem::openItem(){    
     if (list.size() == 0){
         ui.lineEdit_title->clear();
     } else if (list.size() > 0){
-        QSqlQuery query(QString("select book_item.book, books.title, book_item.identifier, book_item.place "
+        QSqlQuery query(QString("select book_item.book, books.title, book_item.identifier  "
                                 "from book_item,doc_item, books "
                                 "where doc_item.book_item = book_item.id and books.id = book_item.book "
                                 "and doc_item.id = \'%1\' ").arg(list.at(curr)));
@@ -120,7 +159,6 @@ void docItem::openItem(){
         ui.lineEdit_title->setText(query.value(1).toString());
         //ui.spinBox_coun->setValue(query.value(2).toInt());
         ui.lineEdit_identifier->setText(query.value(2).toString());
-        ui.lineEdit_place->setText(query.value(3).toString());
     }
     viewItems();
     if (list.size() == 0){
@@ -148,22 +186,29 @@ void docItem::openItem(){
 
 void docItem::saveItem(){
     if (list.size() == 0){
-        QSqlQuery query("insert into book_item (book, identifier, place) values (:book,  :identifier, :place)");
-        query.bindValue(0, QString("%1").arg(ui.spinBox_id_book->value()));
-        query.bindValue(1, ui.lineEdit_identifier->text());
-        query.bindValue(2, ui.lineEdit_place->text());
-        query.exec();
-        QSqlQuery queryDocs("insert into doc_item (doc, book_item) values (:doc, :book_item)");
-        queryDocs.bindValue(0, QString("%1").arg(doc));
-        queryDocs.bindValue(1, QString("%1").arg(query.lastInsertId().toString()));
-        queryDocs.exec();
+        if (vid == 1){
+            QSqlQuery query("insert into book_item (book, identifier) values (:book,  :identifier)");
+            query.bindValue(0, QString("%1").arg(ui.spinBox_id_book->value()));
+            query.bindValue(1, ui.lineEdit_identifier->text());
+            query.bindValue(2, ui.lineEdit_place->text());
+            query.exec();
+            QSqlQuery queryDocs("insert into doc_item (doc, book_item) values (:doc, :book_item)");
+            queryDocs.bindValue(0, QString("%1").arg(doc));
+            queryDocs.bindValue(1, QString("%1").arg(query.lastInsertId().toString()));
+            queryDocs.exec();
+        } else if (vid == 2){
+            QSqlQuery queryDocs("insert into doc_item (doc, book_item) values (:doc, :book_item)");
+            queryDocs.bindValue(0, QString("%1").arg(doc));
+            queryDocs.bindValue(1, QString("%1").arg(ui.spinBox_id_book->value()));
+            queryDocs.exec();
+        }
+
     } else if (list.size() > 0){
         QSqlQuery queryID(QString("select doc_item.book_item from doc_item where doc_item.id = \'%1\'").arg(list.at(curr)));
         queryID.next();
-        QSqlQuery query(QString("update book_item set book = \'%1\', identifier = \'%2\', place = \'%3\' where book_item.id = \'%4\' ")
+        QSqlQuery query(QString("update book_item set book = \'%1\', identifier = \'%2\' where book_item.id = \'%4\' ")
                         .arg(ui.spinBox_id_book->value())
                         .arg(ui.lineEdit_identifier->text())
-                        .arg(ui.lineEdit_place->text())
                         .arg(queryID.value(0).toInt()));
         query.exec();
     }

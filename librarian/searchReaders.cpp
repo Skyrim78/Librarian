@@ -92,13 +92,12 @@ void sReaders::selectColumn(){
 }
 
 void sReaders::search(const QString text){
-    qDebug() << text;
     for (int a = ui.tableWidget_result->rowCount(); a >= 0; a--){
         ui.tableWidget_result->removeRow(a);
     }
     QString s_text("select readers.id, readers.fam, readers.ima, readers.otc, readers.date_r, readers.num, readers.address, readers.phone, "
-                   "(select Count(card_read.id) from card_read where card_read.date_e is null and card_read.read = readers.id), "
-                   "(select Count(card_read.id) from card_read where card_read.date_e is not null and card_read.read = readers.id) from readers where ");
+                   "(select Count(card_read.id) from card_read where card_read.date_e is not null and card_read.read = readers.id), "
+                   "(select Count(card_read.id) from card_read where card_read.date_e is null and card_read.read = readers.id) from readers where ");
     if (ui.radioButton_fam->isChecked()){
         s_text.append(QString("readers.fam like \'%1%\' ").arg(text));
     } else if (ui.radioButton_num->isChecked()){

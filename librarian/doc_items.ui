@@ -62,6 +62,13 @@
              </widget>
             </item>
             <item>
+             <widget class="QRadioButton" name="radioButton_identifier">
+              <property name="text">
+               <string>Identifier</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <spacer name="horizontalSpacer_2">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
@@ -130,6 +137,21 @@
             <column>
              <property name="text">
               <string>Year</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Identifier</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>doc</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>read</string>
              </property>
             </column>
            </widget>

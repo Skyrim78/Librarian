@@ -4,6 +4,7 @@
 #include "ui_search.h"
 #include <QtSql/QtSql>
 #include <QtXml/QtXml>
+#include "bookCard.h"
 
 class search:public QDialog{
     Q_OBJECT
@@ -32,6 +33,8 @@ protected slots:
     QString makeDocResult();
     void printResult();
     void previewResult(QPrinter *p);
+
+    void toBook();
 };
 
 #endif // SEARCH_H

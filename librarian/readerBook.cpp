@@ -7,6 +7,9 @@ readBook::readBook(QList<int> _list, int _curr, int _reader, QWidget *parent):QD
     reader = _reader;
 
     ui.spinBox_id->hide();
+    ui.tableWidget_search->setColumnHidden(0, true);
+    ui.tableWidget_search->setColumnHidden(5, true);
+    ui.tableWidget_search->setColumnHidden(6, true);
     ui.dateEdit_get_date->setDate(QDate::currentDate());
     ui.dateEdit_take_date->setDate(QDate::currentDate());
     readSetting();
@@ -83,15 +86,16 @@ void readBook::openReadBook(){
         ui.dateEdit_get_date->setEnabled(false);
         ui.pushButton_del->setEnabled(false);
     } else if (list.size() > 0){
-        QSqlQuery query(QString("select card_read.book, books.title,  card_read.date_s from card_read, books "
-                                "where books.id = card_read.book and  card_read.id = \'%1\'  ")
+        QSqlQuery query(QString("select card_read.book_item, books.title, book_item.identifier,  card_read.date_s "
+                                "from card_read, books, book_item "
+                                "where book_item.id = card_read.book_item and book_item.book = books.id and  card_read.id = \'%1\'  ")
                         .arg(list.at(curr)));
         query.next();
-        qDebug() << query.lastError();
         ui.spinBox_id->setValue(query.value(0).toInt());
         ui.lineEdit_title->setText(query.value(1).toString());
+        ui.lineEdit_identifier->setText(query.value(2).toString());
         ui.checkBox_take->setChecked(true);
-        ui.dateEdit_take_date->setDate(query.value(2).toDate());
+        ui.dateEdit_take_date->setDate(query.value(3).toDate());
         ui.checkBox_get->setChecked(false);
         ui.dateEdit_get_date->setEnabled(false);
     }
@@ -119,24 +123,37 @@ void readBook::openReadBook(){
 }
 
 void readBook::searchBook(const QString _str){
-    for (int a = ui.tableWidget_search->rowCount(); a >= 0; a--){
+    for (int a = ui.tableWidget_search->rowCount()-1; a >= 0; a--){
         ui.tableWidget_search->removeRow(a);
     }
-    QString search("select books.id, books.isbn, books.title from books where ");
+    QString search("select book_item.id, books.isbn, books.title, authors.name_k, book_item.identifier, "
+                   "(select doc_item.id from docs, doc_item where docs.vid = '2' and doc_item.doc = docs.id and doc_item.book_item = book_item.id), "
+                   "(select card_read.id from card_read where (card_read.date_e is null) and card_read.book_item = book_item.id) "
+                   "from books, book_item, authors, book_auth "
+                   "where books.id = book_item.book and book_auth.book = books.id and book_auth.auth = authors.id and ");
     if (ui.radioButton_name->isChecked()){
         search.append(QString("books.title LIKE  \'%%1%\' ").arg(_str));
     } else if (ui.radioButton_isbn->isChecked()){
         search.append(QString("books.isbn LIKE  \'%%1%\' ").arg(_str));
+    } else if (ui.radioButton_identifier->isChecked()){
+        search.append(QString("book_item.identifier LIKE \'%%1%\' ").arg(_str));
     }
     QSqlQuery query(search);
     int row = 0;
     while (query.next()){
         ui.tableWidget_search->insertRow(row);
-        for (int col = 0; col <3; col++){
+        for (int col = 0; col <7; col++){
             QTableWidgetItem *item = new QTableWidgetItem(query.value(col).toString());
             ui.tableWidget_search->setItem(row, col, item);
         }
         row++;
+    }
+    // clearing
+    for (int a = ui.tableWidget_search->rowCount()-1; a>=0; a--){
+        if (!ui.tableWidget_search->item(a, 5)->text().isEmpty() or
+                !ui.tableWidget_search->item(a, 6)->text().isEmpty()){
+            ui.tableWidget_search->removeRow(a);
+        }
     }
 
 }
@@ -145,17 +162,18 @@ void readBook::selectBook(){
     int row = ui.tableWidget_search->currentRow();
     ui.spinBox_id->setValue(ui.tableWidget_search->item(row, 0)->text().toInt());
     ui.lineEdit_title->setText(ui.tableWidget_search->item(row, 2)->text());
+    ui.lineEdit_identifier->setText(ui.tableWidget_search->item(row, 4)->text());
 }
 
 void readBook::saveReadBook(){
     if (list.size() == 0){
-        QString ins("insert into card_read (read, book, date_s ");
+        QString ins("insert into card_read (read, book_item, date_s ");
         if (ui.checkBox_get->isChecked()){
             ins.append(", date_e) ");
         } else {
             ins.append(") ");
         }
-        ins.append("values (:read, :book, :date_s");
+        ins.append("values (:read, :book_item, :date_s");
         if (ui.checkBox_get->isChecked()){
             ins.append(", :date_e) ");
         } else {
@@ -170,7 +188,7 @@ void readBook::saveReadBook(){
         }
         query.exec();
     } else if (list.size() > 0){
-        QString upd(QString("update card_read set read = \'%1\', book = \'%2\', date_s = \'%3\'")
+        QString upd(QString("update card_read set read = \'%1\', book_item = \'%2\', date_s = \'%3\'")
                     .arg(reader)
                     .arg(ui.spinBox_id->value())
                     .arg(ui.dateEdit_take_date->date().toString("yyyy-MM-dd")));

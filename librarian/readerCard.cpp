@@ -103,67 +103,44 @@ void readCard::openReader(){
         for (int a = ui.tableWidget_active->rowCount(); a >= 0; a--){
             ui.tableWidget_active->removeRow(a);
         }
-        QSqlQuery actBook(QString("select card_read.id, books.id, books.title, card_read.date_s from card_read, books "
-                                  "where card_read.book = books.id and card_read.date_e is null and card_read.read = \'%1\' ").arg(list.at(curr)));
+        QSqlQuery actBook(QString("select card_read.id, book_item.identifier,  books.isbn, books.title, authors.name_k, card_read.date_s "
+                                  "from card_read, books, book_item, authors, book_auth "
+                                  "where card_read.book_item = book_item.id and book_item.book = books.id and "
+                                  "book_auth.book = books.id and book_auth.auth = authors.id and "
+                                  "card_read.date_e is null and card_read.read = \'%1\' ").arg(list.at(curr)));
         int row = 0;
         while (actBook.next()){
             ui.tableWidget_active->insertRow(row);
-            QTableWidgetItem *_id = new QTableWidgetItem(actBook.value(0).toString());
-            ui.tableWidget_active->setItem(row, 0, _id);
-
-            QTableWidgetItem *_title = new QTableWidgetItem(actBook.value(2).toString());
-            ui.tableWidget_active->setItem(row, 1, _title);
-
-            QSqlQuery _auth(QString("select authors.name_k from authors, book_auth "
-                                    "where book_auth.auth = authors.id and book_auth.book = %1").arg(actBook.value(1).toString()));
-            QString auth;
-            while (_auth.next()){
-                auth.append(_auth.value(0).toString());
+            for (int col = 0; col < 6; col++){
+                QTableWidgetItem *item = new QTableWidgetItem(actBook.value(col).toString());
+                ui.tableWidget_active->setItem(row, col, item);
             }
-
-            QTableWidgetItem *_authors = new QTableWidgetItem(auth);
-            ui.tableWidget_active->setItem(row, 2, _authors);
-
-            QTableWidgetItem *_dateS = new QTableWidgetItem(actBook.value(3).toString());
-            ui.tableWidget_active->setItem(row, 3, _dateS);
-
             row++;
         }
+        ui.tableWidget_active->resizeColumnsToContents();
+        ui.tableWidget_active->horizontalHeader()->setStretchLastSection(true);
 
         //**history***//
         for (int a = ui.tableWidget_history->rowCount(); a >= 0; a-- ){
             ui.tableWidget_history->removeRow(a);
         }
 
-        QSqlQuery hisBook(QString("select card_read.id, books.id, books.title, card_read.date_s, card_read.date_e from card_read, books "
-                                  "where card_read.book = books.id and card_read.date_e is not null and card_read.read = \'%1\' ").arg(list.at(curr)));
+        QSqlQuery hisBook(QString("select card_read.id, book_item.identifier,  books.isbn, books.title, authors.name_k, card_read.date_s, card_read.date_e "
+                                  "from card_read, books, book_item, authors, book_auth "
+                                  "where card_read.book_item = book_item.id and book_item.book = books.id and "
+                                  "book_auth.book = books.id and book_auth.auth = authors.id and "
+                                  "card_read.date_e is not null and card_read.read = \'%1\' ").arg(list.at(curr)));
         int row2 = 0;
         while (hisBook.next()){
             ui.tableWidget_history->insertRow(row2);
-            QTableWidgetItem *_id_his = new QTableWidgetItem(hisBook.value(0).toString());
-            ui.tableWidget_history->setItem(row2, 0, _id_his);
-
-            QTableWidgetItem *_title_his = new QTableWidgetItem(hisBook.value(2).toString());
-            ui.tableWidget_history->setItem(row2, 1, _title_his);
-
-            QSqlQuery _auth_his(QString("select authors.name_k from authors, book_auth "
-                                    "where book_auth.auth = authors.id and book_auth.book = %1").arg(hisBook.value(1).toString()));
-            QString auth_his;
-            while (_auth_his.next()){
-                auth_his.append(_auth_his.value(0).toString());
+            for (int col = 0; col < 7; col++){
+                QTableWidgetItem *item = new QTableWidgetItem(hisBook.value(col).toString());
+                ui.tableWidget_history->setItem(row2, col, item);
             }
-
-            QTableWidgetItem *_authors_his = new QTableWidgetItem(auth_his);
-            ui.tableWidget_history->setItem(row2, 2, _authors_his);
-
-            QTableWidgetItem *_dateS_his = new QTableWidgetItem(hisBook.value(3).toString());
-            ui.tableWidget_history->setItem(row2, 3, _dateS_his);
-
-            QTableWidgetItem *_dateE_his = new QTableWidgetItem(hisBook.value(4).toString());
-            ui.tableWidget_history->setItem(row2, 4, _dateE_his);
-
-            row++;
+            row2++;
         }
+        ui.tableWidget_history->resizeColumnsToContents();
+        ui.tableWidget_history->horizontalHeader()->setStretchLastSection(true);
     }
     if (list.size() == 0){
         ui.pushButton_toFirst->setEnabled(false);

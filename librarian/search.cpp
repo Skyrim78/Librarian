@@ -56,6 +56,8 @@ search::search(QWidget *parent):QDialog(parent){
     connect(ui.pushButton_print, SIGNAL(clicked()), SLOT(printResult()));
     connect(ui.toolButton_result, SIGNAL(clicked(bool)), ui.groupBox_result_title, SLOT(setVisible(bool)));
     connect(ui.checkBox_res_title, SIGNAL(clicked(bool)), ui.lineEdit_res_title, SLOT(setEnabled(bool)));
+    //
+    connect(ui.tableWidget_result, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(toBook()));
 }
 
 void search::readSetting(){
@@ -384,9 +386,11 @@ QString search::makeDocResult(){
         if (ui.checkBox_lang->isChecked()){
             text.append(QString("<td>%1</td>").arg(ui.tableWidget_result->item(row, 8)->text()));
         }
+
         if (ui.checkBox_place->isChecked()){
             text.append(QString("<td>%1</td>").arg(ui.tableWidget_result->item(row, 9)->text()));
         }
+
     }
     text.append("</table></body></html>");
     return text;
@@ -405,5 +409,15 @@ void search::previewResult(QPrinter *p){
     QTextDocument *textDoc = new QTextDocument();
     textDoc->setHtml(makeDocResult());
     textDoc->print(p);
+}
+
+void search::toBook(){
+    int cRow = ui.tableWidget_result->currentRow();
+    QList<int> _l;
+    for (int row = 0; row < ui.tableWidget_result->rowCount(); row++){
+        _l << ui.tableWidget_result->item(row, 0)->text().toInt();
+    }
+    b_card *bc = new b_card(_l, cRow, false, this);
+    bc->exec();
 }
 

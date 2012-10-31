@@ -476,6 +476,16 @@
            </column>
            <column>
             <property name="text">
+             <string>Identifier</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>ISBN</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
              <string>Title of book</string>
             </property>
            </column>

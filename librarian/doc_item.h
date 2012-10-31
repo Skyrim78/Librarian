@@ -14,6 +14,8 @@ public:
     QList<int> list;
     int curr;
     int doc;
+    int vid;
+
 
     virtual void closeEvent(QCloseEvent *);
 
