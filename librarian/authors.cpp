@@ -1,4 +1,5 @@
 #include "authors.h"
+#include "bookCard.h"
 
 auth::auth(QWidget *parent):QMainWindow(parent){
     ui.setupUi(this);
@@ -12,7 +13,7 @@ auth::auth(QWidget *parent):QMainWindow(parent){
     connect(ui.actionClose, SIGNAL(triggered()), this, SLOT(close()));
 
     connect(ui.actionAdd, SIGNAL(triggered()), this, SLOT(addAuth()));
-    connect(ui.tableWidget_authors, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(editAuth()));
+    connect(ui.tableWidget_authors, SIGNAL(clicked(QModelIndex)), this, SLOT(editAuth()));
     connect(ui.pushButton_save, SIGNAL(clicked()), this, SLOT(saveAuth()));
     connect(ui.pushButton_del, SIGNAL(clicked()), this, SLOT(deleteAuth()));
     connect(ui.pushButton_close, SIGNAL(clicked()), this, SLOT(closeAuth()));
@@ -20,6 +21,8 @@ auth::auth(QWidget *parent):QMainWindow(parent){
     connect(ui.lineEdit_fam, SIGNAL(textEdited(QString)), this, SLOT(makeNameK()));
     connect(ui.lineEdit_ima, SIGNAL(textEdited(QString)), this, SLOT(makeNameK()));
     connect(ui.lineEdit_otc, SIGNAL(textEdited(QString)), this, SLOT(makeNameK()));
+    //----
+    connect(ui.tableWidget_book, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(toBook()));
 
 }
 
@@ -199,4 +202,13 @@ void auth::makeNameK(){
     }
 
     ui.lineEdit_k->setText(name_k);
+}
+
+void auth::toBook(){
+    QList<int> list;
+    for (int row = 0; row < ui.tableWidget_book->rowCount(); row++){
+        list << ui.tableWidget_book->item(row, 0)->text().toInt();
+    }
+    b_card *bc = new b_card(list, ui.tableWidget_book->currentRow(), false, this);
+    bc->exec();
 }

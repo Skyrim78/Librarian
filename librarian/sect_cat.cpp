@@ -156,9 +156,12 @@ void sect_cat::updateCat(){
         ui.tableWidget_cat->removeRow(a);
     }
     QString query("select category.id, sections.name, category.name, "
-                  "(select Count(doc_item.id) from doc_item, book_item, books, docs "
-                  "where doc_item.book_item = book_item.id and book_item.book = books.id "
-                  "and doc_item.doc = docs.id and docs.vid = '1' and books.cat = category.id) "
+                  "(select Count(book_item.identifier) "
+                  "from books, book_item, docs, doc_item "
+                  "where book_item.book = books.id and doc_item.book_item = book_item.id and doc_item.doc = docs.id and docs.vid = '1' and books.cat = category.id) -"
+                  "(select Count(book_item.identifier) "
+                   "from books, book_item, docs, doc_item "
+                  "where book_item.book = books.id and doc_item.book_item = book_item.id and doc_item.doc = docs.id and docs.vid = '2' and books.cat = category.id) "
                   "from category, sections where category.sect = sections.id ");
 
     if (sectID > 0){

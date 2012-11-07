@@ -27,6 +27,7 @@ protected slots:
     void closeAuth();
 
     void makeNameK();
+    void toBook();
 };
 
 #endif // AUTHORS_H

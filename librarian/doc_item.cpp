@@ -21,6 +21,7 @@ docItem::docItem(QList<int> _list, int _curr, int _doc, QWidget *parent):QDialog
     } else if (vid == 2){
         ui.lineEdit_place->hide();
         ui.label_3->hide();
+        ui.lineEdit_identifier->setReadOnly(true);
     }
 
     openItem();
