@@ -150,7 +150,6 @@ void import::importData(){
         testImport.next();
 
         if (!testImport.value(0).isValid()){
-            qDebug() << content;
             QSqlQuery qImport(query);
             for(int x = 0; x < column; x++){
                 qImport.bindValue(x, content.at(x));
@@ -159,7 +158,6 @@ void import::importData(){
             if (ui.comboBox_object->currentIndex() == 4){ // load book's authors
                 QSqlQuery qIdBook("select Max(books.id) from books");
                 qIdBook.next();
-                qDebug() << qIdBook.value(0).toString();
                 for (int  x = 9; x < 12; x++){
                     if (content.at(x).size() > 1 and content.at(x) != " "){
                         QSqlQuery qIdAuth(QString("select authors.id from authors where authors.name_k = \'%1\'").arg(content.at(x)));

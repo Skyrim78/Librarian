@@ -35,6 +35,7 @@ docs::docs(int _v, QWidget *parent):QMainWindow(parent){
     connect(ui.checkBox_date, SIGNAL(clicked(bool)), this, SLOT(selectColumn()));
     connect(ui.checkBox_org, SIGNAL(clicked(bool)), this, SLOT(selectColumn()));
     connect(ui.checkBox_note, SIGNAL(clicked(bool)), this, SLOT(selectColumn()));
+    connect(ui.checkBox_books, SIGNAL(clicked(bool)), this, SLOT(selectColumn()));
 
     connect(ui.tableWidget_docs, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(openDoc()));
 }
@@ -60,6 +61,7 @@ void docs::readSetting(){
          ui.checkBox_num->setChecked(node.item(0).attributes().namedItem("num").nodeValue().toInt());
          ui.checkBox_org->setChecked(node.item(0).attributes().namedItem("org").nodeValue().toInt());
          ui.checkBox_note->setChecked(node.item(0).attributes().namedItem("note").nodeValue().toInt());
+         ui.checkBox_books->setChecked(node.item(0).attributes().namedItem("books").nodeValue().toInt());
          setGeometry(_x, _y, _w, _h);
     }
     file.close();
@@ -86,6 +88,7 @@ void docs::writeSetting(){
     node.item(0).attributes().namedItem("num").setNodeValue(QString("%1").arg(ui.checkBox_num->isChecked()));
     node.item(0).attributes().namedItem("org").setNodeValue(QString("%1").arg(ui.checkBox_org->isChecked()));
     node.item(0).attributes().namedItem("note").setNodeValue(QString("%1").arg(ui.checkBox_note->isChecked()));
+    node.item(0).attributes().namedItem("books").setNodeValue(QString("%1").arg(ui.checkBox_books->isChecked()));
     file.open(QIODevice::WriteOnly);
     doc.save(out, 4);
     file.close();
@@ -99,6 +102,7 @@ void docs::selectColumn(){
     ui.tableWidget_docs->setColumnHidden(2, !ui.checkBox_num->isChecked());
     ui.tableWidget_docs->setColumnHidden(4, !ui.checkBox_org->isChecked());
     ui.tableWidget_docs->setColumnHidden(5, !ui.checkBox_note->isChecked());
+    ui.tableWidget_docs->setColumnHidden(6, !ui.checkBox_books->isChecked());
     ui.tableWidget_docs->resizeColumnsToContents();
     ui.tableWidget_docs->horizontalHeader()->setStretchLastSection(true);
 }
@@ -107,13 +111,14 @@ void docs::readDocs(){
     for (int a = ui.tableWidget_docs->rowCount(); a >= 0; a--){
         ui.tableWidget_docs->removeRow(a);
     }
-    QSqlQuery query(QString("select docs.id, docs.name, docs.num, docs.date_d, organizations.name, docs.note "
+    QSqlQuery query(QString("select docs.id, docs.name, docs.num, docs.date_d, organizations.name, docs.note, "
+                            "(select Count(doc_item.id) from doc_item where doc_item.doc = docs.id) "
                             "from docs, organizations where organizations.id = docs.org and docs.vid = \'%1\' "
                             "order by docs.date_d").arg(vid));
     int row = 0;
     while (query.next()){
         ui.tableWidget_docs->insertRow(row);
-        for (int col = 0; col < 6; col ++){
+        for (int col = 0; col < 7; col ++){
             QTableWidgetItem *item = new QTableWidgetItem(query.value(col).toString());
             ui.tableWidget_docs->setItem(row, col, item);
         }

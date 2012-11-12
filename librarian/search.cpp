@@ -285,6 +285,7 @@ void search::runQuery(){
     for (int row = 0; row < ui.tableWidget_items->rowCount(); row++){
         queryString.append(ui.tableWidget_items->item(row, 0)->text());
     }
+    queryString.append(" group by books.id ");
     QSqlQuery mainQuery(queryString);
 
     int row = 0;

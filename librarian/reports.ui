@@ -46,32 +46,32 @@
        </property>
        <item>
         <property name="text">
-         <string>Report 1</string>
+         <string>Отчет о поступлении</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>Report 2</string>
+         <string>Отчет о выбытии</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>Report 3</string>
+         <string>Книги у читателей</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>Report 4</string>
+         <string>Книги в библиотеке</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>Report 5</string>
+         <string>Электронные книги</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>Report 6</string>
+         <string>&quot;Черный список&quot;</string>
         </property>
        </item>
        <item>

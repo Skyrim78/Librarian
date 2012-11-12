@@ -121,9 +121,15 @@ void books::readBook(){
         ui.tableWidget_book->removeRow(a);
     }
     QSqlQuery _b("select books.id, books.isbn, books.title, sections.name, category.name, publish.name, "
-                   "books.year "
-                   "from books, sections, category, publish "
-                   "where sections.id = books.sect and category.id = books.cat and publish.id = books.pub ");
+                    "books.year, books.place, "
+                 "(select Count(doc_item.id) from docs, doc_item, book_item where docs.vid = 1 and doc_item.doc = docs.id "
+                 "and doc_item.book_item = book_item.id and book_item.book = books.id), " // приход
+                 "(select Count(doc_item.id) from docs, doc_item, book_item where docs.vid = 2 and doc_item.doc = docs.id "
+                 "and doc_item.book_item = book_item.id and book_item.book = books.id), " // расход
+                 "(select Count(card_read.id) from card_read, book_item where (card_read.date_e is null) "
+                 "and card_read.book_item = book_item.id and book_item.book = books.id ) "//readers' book
+                    "from books, sections, category, publish "
+                    "where sections.id = books.sect and category.id = books.cat and publish.id = books.pub ");
     int row = 0;
     while (_b.next()){
         ui.tableWidget_book->insertRow(row);
@@ -140,10 +146,14 @@ void books::readBook(){
         QTableWidgetItem *itemAuth = new QTableWidgetItem(auth);
         ui.tableWidget_book->setItem(row, 3, itemAuth);
 
-        for (int col = 4; col < 8; col++){
+        for (int col = 4; col < 12; col++){
             QTableWidgetItem *item = new QTableWidgetItem(_b.value(col-1).toString());
             ui.tableWidget_book->setItem(row, col, item);
         }
+        int ava = ui.tableWidget_book->item(row, 9)->text().toInt() -
+                ui.tableWidget_book->item(row, 10)->text().toInt() - ui.tableWidget_book->item(row, 11)->text().toInt();
+        QTableWidgetItem *itemAva = new QTableWidgetItem(QString("%1").arg(ava));
+        ui.tableWidget_book->setItem(row, 12, itemAva);
         row++;
     }
     selectColumns();

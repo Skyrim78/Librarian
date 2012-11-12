@@ -78,6 +78,13 @@
             </widget>
            </item>
            <item>
+            <widget class="QCheckBox" name="checkBox_books">
+             <property name="text">
+              <string>Books</string>
+             </property>
+            </widget>
+           </item>
+           <item>
             <spacer name="verticalSpacer">
              <property name="orientation">
               <enum>Qt::Vertical</enum>
@@ -370,6 +377,11 @@
             <font>
              <pointsize>10</pointsize>
             </font>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Books</string>
            </property>
           </column>
          </widget>
