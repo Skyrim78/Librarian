@@ -1,4 +1,7 @@
 #include "reports.h"
+#include "doc_card.h"
+#include "bookCard.h"
+#include "readerCard.h"
 
 reports::reports(int r, QWidget *parent):QDialog(parent){
     ui.setupUi(this);
@@ -29,6 +32,8 @@ reports::reports(int r, QWidget *parent):QDialog(parent){
     connect(ui.checkBox_period, SIGNAL(clicked(bool)), ui.label_2, SLOT(setEnabled(bool)));
 
     connect(ui.pushButton_ok, SIGNAL(clicked()), this, SLOT(makeReport()));
+
+    connect(ui.tableWidget_result, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(toDocsBooksReaders()));
 
 }
 
@@ -222,5 +227,24 @@ void reports::makeReport(){
             }
         }
         ui.tableWidget_result->setColumnHidden(8, true);
+    }
+}
+
+
+void reports::toDocsBooksReaders(){
+    QList<int> list;
+    for (int r = 0; r < ui.tableWidget_result->rowCount(); r++){
+        list << ui.tableWidget_result->item(r, 0)->text().toInt();
+    }
+    int curr = ui.tableWidget_result->currentRow();
+    if (report == 0 or report == 1){
+        docCard *d = new docCard(list, curr, this);
+        d->exec();
+    } else if (report == 2 or report == 3 or report == 4){
+        b_card *bc = new b_card(list, curr, false, this);
+        bc->exec();
+    } else if (report == 5){
+        readCard *rc = new readCard(list, curr, this);
+        rc->exec();
     }
 }

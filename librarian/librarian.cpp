@@ -12,6 +12,7 @@
 #include "import.h"
 #include "search.h"
 #include "reports.h"
+#include "owner.h"
 
 
 librarian::librarian(QWidget *parent) :
@@ -46,8 +47,14 @@ librarian::librarian(QWidget *parent) :
     connect(ui->actionExit, SIGNAL(triggered()), this, SLOT(close()));
     connect(ui->actionAboutQt, SIGNAL(triggered()), this, SLOT(aboutQt()));
     connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(aboutProg()));
+    connect(ui->actionOwner, SIGNAL(triggered()), this, SLOT(toOwner()));
     //---------reports
     connect(ui->actionReport1, SIGNAL(triggered()), this, SLOT(toReport1()));
+    connect(ui->actionReport2, SIGNAL(triggered()), this, SLOT(toReport2()));
+    connect(ui->actionReport3, SIGNAL(triggered()), this, SLOT(toReport3()));
+    connect(ui->actionReport4, SIGNAL(triggered()), this, SLOT(toReport4()));
+    connect(ui->actionReport5, SIGNAL(triggered()), this, SLOT(toReport5()));
+    connect(ui->actionReport6, SIGNAL(triggered()), this, SLOT(toReport6()));
 }
 
 librarian::~librarian()
@@ -217,7 +224,34 @@ void librarian::aboutProg(){
                                                     "<br>e-mail: Skyrim78@yandex.ru"));
 }
 
+void librarian::toOwner(){
+    owner *o = new owner(this);
+    o->exec();
+}
+
 void librarian::toReport1(){
     reports *rep1 = new reports(0, this);
     rep1->exec();
 }
+
+void librarian::toReport2(){
+    reports *rep1 = new reports(1, this);
+    rep1->exec();
+}
+void librarian::toReport3(){
+    reports *rep1 = new reports(2, this);
+    rep1->exec();
+}
+void librarian::toReport4(){
+    reports *rep1 = new reports(3, this);
+    rep1->exec();
+}
+void librarian::toReport5(){
+    reports *rep1 = new reports(4, this);
+    rep1->exec();
+}
+void librarian::toReport6(){
+    reports *rep1 = new reports(5, this);
+    rep1->exec();
+}
+

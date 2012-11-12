@@ -47,10 +47,16 @@ public slots:
     void toSearch();
     //----reports
     void toReport1();
+    void toReport2();
+    void toReport3();
+    void toReport4();
+    void toReport5();
+    void toReport6();
 
     //-------
     void aboutQt();
     void aboutProg();
+    void toOwner();
 
 };
 

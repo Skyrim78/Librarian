@@ -26,7 +26,8 @@ SOURCES += main.cpp\
     searchReaders.cpp \
     import.cpp \
     search.cpp \
-    report.cpp
+    report.cpp \
+    owner.cpp
 
 HEADERS  += librarian.h \
     organizations.h \
@@ -44,7 +45,8 @@ HEADERS  += librarian.h \
     searchReaders.h \
     import.h \
     search.h \
-    reports.h
+    reports.h \
+    owner.h
 
 FORMS    += librarian.ui \
     organizations.ui \
@@ -62,4 +64,5 @@ FORMS    += librarian.ui \
     searchReaders.ui \
     import.ui \
     search.ui \
-    reports.ui
+    reports.ui \
+    owner.ui

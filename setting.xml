@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <setting>
-    <org width="792" x="98" y="61" note="1" email="1" height="650" phone="1" address="1" name="1" face="1"/>
+    <org width="843" x="98" y="61" note="1" email="1" height="625" phone="1" address="1" name="1" face="1"/>
     <cat width="726" x="130" y="82" height="561"/>
     <pub width="784" x="72" y="73" height="550"/>
     <auth width="915" x="98" y="89" height="642"/>
@@ -15,4 +15,5 @@
     <search_readers width="716" num="0" x="93" date_r="1" y="98" readed="1" height="436" reading="1" ima="1" phone="0" otc="1" address="0" fam="1"/>
     <search width="906" x="97" title="1" place="0" y="132" sect="1" isbn="1" height="460" auth="1" pub="1" year="1" cat="1" lang="1"/>
     <reports width="972" x="91" y="78" height="580"/>
+    <owner width="500" x="91" y="78" height="283"/>
 </setting>

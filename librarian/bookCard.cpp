@@ -334,7 +334,6 @@ void b_card::openBook(){
 }
 
 void b_card::saveCard(){
-    qDebug() << file_photo;
     QSqlQuery _s(QString("select sections.id from sections where sections.name = \'%1\' ")
                  .arg(ui.comboBox_sect->currentText()));
     _s.next();

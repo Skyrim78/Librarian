@@ -21,6 +21,8 @@ protected slots:
     void selectReport();
     void makeReport();
 
+    void toDocsBooksReaders();
+
 };
 
 #endif // REPORTS_H
