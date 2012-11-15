@@ -36,7 +36,7 @@
         </size>
        </property>
        <property name="title">
-        <string>Setting</string>
+        <string>Настройки</string>
        </property>
        <layout class="QGridLayout" name="gridLayout">
         <item row="0" column="0">
@@ -46,7 +46,7 @@
             <item>
              <widget class="QLabel" name="label_4">
               <property name="text">
-               <string>Object:</string>
+               <string>Объект:</string>
               </property>
              </widget>
             </item>
@@ -54,37 +54,37 @@
              <widget class="QComboBox" name="comboBox_object">
               <item>
                <property name="text">
-                <string>Authors:</string>
+                <string>Авторы</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>Publishers:</string>
+                <string>Издательства</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>Sections:</string>
+                <string>Разделы</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>Category:</string>
+                <string>Категории</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>Books:</string>
+                <string>Книги</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>Readers:</string>
+                <string>Читатели</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>Organizations:</string>
+                <string>Организации</string>
                </property>
               </item>
              </widget>
@@ -109,7 +109,7 @@
             <item>
              <widget class="QLabel" name="label">
               <property name="text">
-               <string>First line number:</string>
+               <string>Номер первой строки:</string>
               </property>
              </widget>
             </item>
@@ -148,12 +148,12 @@
             </attribute>
             <column>
              <property name="text">
-              <string>Title</string>
+              <string>Название</string>
              </property>
             </column>
             <column>
              <property name="text">
-              <string>№ column</string>
+              <string>№ колонки</string>
              </property>
             </column>
            </widget>
@@ -183,7 +183,7 @@
          <item>
           <widget class="QLabel" name="label_3">
            <property name="text">
-            <string>Split</string>
+            <string>Разделитель:</string>
            </property>
           </widget>
          </item>
@@ -236,7 +236,7 @@
          <item>
           <widget class="QLabel" name="label_2">
            <property name="text">
-            <string>File:</string>
+            <string>Файл:</string>
            </property>
           </widget>
          </item>
@@ -285,7 +285,7 @@
             </size>
            </property>
            <property name="text">
-            <string>Import</string>
+            <string>Импорт</string>
            </property>
           </widget>
          </item>
@@ -304,7 +304,7 @@
             </size>
            </property>
            <property name="text">
-            <string>Close</string>
+            <string>Закрыть</string>
            </property>
           </widget>
          </item>

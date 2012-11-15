@@ -34,6 +34,8 @@ protected slots:
     void printResult();
     void previewResult(QPrinter *p);
 
+    void saveResult();
+
     void toBook();
 };
 

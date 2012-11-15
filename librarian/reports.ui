@@ -16,7 +16,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Reports</string>
+   <string>Отчеты</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0">
@@ -91,7 +91,7 @@
         </size>
        </property>
        <property name="title">
-        <string>Terms</string>
+        <string>Условия</string>
        </property>
        <layout class="QGridLayout" name="gridLayout">
         <item row="0" column="0">
@@ -101,7 +101,7 @@
             <item>
              <widget class="QCheckBox" name="checkBox_org">
               <property name="text">
-               <string>Organization</string>
+               <string>Организация</string>
               </property>
              </widget>
             </item>
@@ -128,7 +128,7 @@
             <item>
              <widget class="QCheckBox" name="checkBox_period">
               <property name="text">
-               <string>Period from</string>
+               <string>Период с</string>
               </property>
              </widget>
             </item>
@@ -142,7 +142,7 @@
             <item>
              <widget class="QLabel" name="label_2">
               <property name="text">
-               <string>to</string>
+               <string>по</string>
               </property>
              </widget>
             </item>
@@ -173,7 +173,7 @@
             <item>
              <widget class="QLabel" name="label_3">
               <property name="text">
-               <string>More than</string>
+               <string>Более чем</string>
               </property>
              </widget>
             </item>
@@ -190,7 +190,7 @@
             <item>
              <widget class="QLabel" name="label_4">
               <property name="text">
-               <string>days</string>
+               <string>дн</string>
               </property>
              </widget>
             </item>
@@ -298,7 +298,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Print</string>
+          <string>Печать</string>
          </property>
         </widget>
        </item>
@@ -317,7 +317,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Save</string>
+          <string>Сохранить</string>
          </property>
         </widget>
        </item>
@@ -349,7 +349,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Close</string>
+          <string>Закрыть</string>
          </property>
         </widget>
        </item>

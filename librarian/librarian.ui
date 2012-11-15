@@ -26,7 +26,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>24</height>
+     <height>22</height>
     </rect>
    </property>
    <property name="font">
@@ -43,7 +43,7 @@
      </font>
     </property>
     <property name="title">
-     <string>Setting</string>
+     <string>Настройки</string>
     </property>
     <addaction name="actionSettingDB"/>
    </widget>
@@ -55,7 +55,7 @@
      </font>
     </property>
     <property name="title">
-     <string>Reference</string>
+     <string>Справочник</string>
     </property>
     <addaction name="actionOrganizations"/>
     <addaction name="actionSectCat"/>
@@ -74,7 +74,7 @@
      </font>
     </property>
     <property name="title">
-     <string>Library</string>
+     <string>Библиотека</string>
     </property>
     <addaction name="action_biblio"/>
     <addaction name="separator"/>
@@ -88,7 +88,7 @@
      </font>
     </property>
     <property name="title">
-     <string>Search</string>
+     <string>Поиск</string>
     </property>
     <addaction name="actionSearch"/>
    </widget>
@@ -99,7 +99,7 @@
      </font>
     </property>
     <property name="title">
-     <string>Reports</string>
+     <string>Отчеты</string>
     </property>
     <addaction name="actionReport1"/>
     <addaction name="actionReport2"/>
@@ -159,7 +159,7 @@
     <set>QDockWidget::DockWidgetClosable</set>
    </property>
    <property name="windowTitle">
-    <string>Database</string>
+    <string>База данных</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>1</number>
@@ -173,7 +173,7 @@
          <item>
           <widget class="QLabel" name="label">
            <property name="text">
-            <string>File:</string>
+            <string>Файл:</string>
            </property>
           </widget>
          </item>
@@ -194,14 +194,14 @@
          <item>
           <widget class="QPushButton" name="pushButton_create">
            <property name="text">
-            <string>Create...</string>
+            <string>Создать...</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="pushButton_open">
            <property name="text">
-            <string>Open...</string>
+            <string>Открыть...</string>
            </property>
           </widget>
          </item>
@@ -223,7 +223,7 @@
        <item>
         <widget class="QGroupBox" name="groupBox">
          <property name="title">
-          <string>New database</string>
+          <string>Новая база данных</string>
          </property>
          <layout class="QGridLayout" name="gridLayout">
           <item row="0" column="0">
@@ -233,7 +233,7 @@
               <item>
                <widget class="QLabel" name="label_2">
                 <property name="text">
-                 <string>Name</string>
+                 <string>Название файл</string>
                 </property>
                </widget>
               </item>
@@ -267,7 +267,7 @@
               <item>
                <widget class="QLabel" name="label_4">
                 <property name="text">
-                 <string>Organization:</string>
+                 <string>Организация владелец:</string>
                 </property>
                </widget>
               </item>
@@ -294,7 +294,7 @@
               <item>
                <widget class="QPushButton" name="pushButton_new_make">
                 <property name="text">
-                 <string>Save</string>
+                 <string>Сохранить</string>
                 </property>
                </widget>
               </item>
@@ -325,7 +325,7 @@
   </widget>
   <action name="actionSettingDB">
    <property name="text">
-    <string>Datebase</string>
+    <string>База данных</string>
    </property>
    <property name="font">
     <font>
@@ -336,7 +336,7 @@
   </action>
   <action name="actionOrganizations">
    <property name="text">
-    <string>Organizations</string>
+    <string>Организации</string>
    </property>
    <property name="font">
     <font>
@@ -346,7 +346,7 @@
   </action>
   <action name="actionSectCat">
    <property name="text">
-    <string>Sections and Categories</string>
+    <string>Разделы и Категории</string>
    </property>
    <property name="font">
     <font>
@@ -356,7 +356,7 @@
   </action>
   <action name="actionPub">
    <property name="text">
-    <string>Publishers</string>
+    <string>Издательства</string>
    </property>
    <property name="font">
     <font>
@@ -366,7 +366,7 @@
   </action>
   <action name="actionAuth">
    <property name="text">
-    <string>Authors</string>
+    <string>Авторы</string>
    </property>
    <property name="font">
     <font>
@@ -376,7 +376,7 @@
   </action>
   <action name="actionBooks">
    <property name="text">
-    <string>Books</string>
+    <string>Книги</string>
    </property>
    <property name="font">
     <font>
@@ -386,7 +386,7 @@
   </action>
   <action name="actionReaders">
    <property name="text">
-    <string>Readers</string>
+    <string>Читатель</string>
    </property>
    <property name="font">
     <font>
@@ -396,7 +396,7 @@
   </action>
   <action name="action_biblio">
    <property name="text">
-    <string>Lending/receiving book</string>
+    <string>Прием / Выдача книг</string>
    </property>
    <property name="font">
     <font>
@@ -406,7 +406,7 @@
   </action>
   <action name="action_doc_in">
    <property name="text">
-    <string>Receipt documents</string>
+    <string>Приходные документы</string>
    </property>
    <property name="font">
     <font>
@@ -416,7 +416,7 @@
   </action>
   <action name="action_doc_out">
    <property name="text">
-    <string>Expenses receipts</string>
+    <string>Расходные документы</string>
    </property>
    <property name="font">
     <font>
@@ -486,27 +486,27 @@
   </action>
   <action name="actionHelp">
    <property name="text">
-    <string>Help</string>
+    <string>Помощь</string>
    </property>
   </action>
   <action name="actionAbout">
    <property name="text">
-    <string>About</string>
+    <string>О программе</string>
    </property>
   </action>
   <action name="actionAboutQt">
    <property name="text">
-    <string>About Qt</string>
+    <string>О Qt</string>
    </property>
   </action>
   <action name="actionExit">
    <property name="text">
-    <string>Exit</string>
+    <string>Выход</string>
    </property>
   </action>
   <action name="actionImport">
    <property name="text">
-    <string>Import</string>
+    <string>Импорт</string>
    </property>
    <property name="font">
     <font>
@@ -516,7 +516,7 @@
   </action>
   <action name="actionExport">
    <property name="text">
-    <string>Export</string>
+    <string>Экспорт</string>
    </property>
    <property name="font">
     <font>
@@ -536,7 +536,7 @@
   </action>
   <action name="actionOwner">
    <property name="text">
-    <string>Owner</string>
+    <string>Владелец</string>
    </property>
   </action>
  </widget>

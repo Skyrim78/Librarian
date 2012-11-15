@@ -4,6 +4,10 @@
 #include "ui_reports.h"
 #include <QtSql/QtSql>
 #include <QtXml/QtXml>
+#include <QTextDocument>
+#include <QPrinter>
+#include <QPrinterInfo>
+#include <QPrintPreviewDialog>
 
 class reports:public QDialog{
     Q_OBJECT
@@ -22,6 +26,11 @@ protected slots:
     void makeReport();
 
     void toDocsBooksReaders();
+
+    QString makeDocReport();
+    void printReport();
+    void previewReport(QPrinter *p);
+    void saveReport();
 
 };
 

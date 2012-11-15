@@ -16,7 +16,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Books</string>
+   <string>Книги</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_3">
    <item row="0" column="0">
@@ -24,7 +24,7 @@
      <item>
       <widget class="QGroupBox" name="groupBox">
        <property name="title">
-        <string>Search</string>
+        <string>Поиск</string>
        </property>
        <layout class="QGridLayout" name="gridLayout">
         <item row="0" column="0">
@@ -57,14 +57,14 @@
             <item>
              <widget class="QRadioButton" name="radioButton_title">
               <property name="text">
-               <string>Title</string>
+               <string>Название</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QRadioButton" name="radioButton_identifier">
               <property name="text">
-               <string>Identifier</string>
+               <string>Идентификатор</string>
               </property>
              </widget>
             </item>
@@ -121,27 +121,27 @@
             </column>
             <column>
              <property name="text">
-              <string>Title</string>
+              <string>Название</string>
              </property>
             </column>
             <column>
              <property name="text">
-              <string>Author</string>
+              <string>Автор</string>
              </property>
             </column>
             <column>
              <property name="text">
-              <string>Publisher</string>
+              <string>Издательство</string>
              </property>
             </column>
             <column>
              <property name="text">
-              <string>Year</string>
+              <string>Год</string>
              </property>
             </column>
             <column>
              <property name="text">
-              <string>Identifier</string>
+              <string>Идентификатор</string>
              </property>
             </column>
             <column>
@@ -169,7 +169,7 @@
        <item>
         <widget class="QLabel" name="label">
          <property name="text">
-          <string>Title:</string>
+          <string>Название:</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -190,7 +190,7 @@
        <item>
         <widget class="QLabel" name="label_2">
          <property name="text">
-          <string>Identifier:</string>
+          <string>Идентификатор:</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -203,7 +203,7 @@
        <item>
         <widget class="QLabel" name="label_3">
          <property name="text">
-          <string>Place:</string>
+          <string>Место хранения:</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -245,7 +245,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Del</string>
+          <string>Удалить</string>
          </property>
          <property name="autoDefault">
           <bool>false</bool>
@@ -368,7 +368,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Save</string>
+          <string>Сохранить</string>
          </property>
          <property name="autoDefault">
           <bool>false</bool>
@@ -390,7 +390,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Close</string>
+          <string>Закрыть</string>
          </property>
          <property name="autoDefault">
           <bool>false</bool>
@@ -455,27 +455,27 @@
           </column>
           <column>
            <property name="text">
-            <string>Title</string>
+            <string>Название</string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string>Author</string>
+            <string>Автор</string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string>Publisher</string>
+            <string>Издательство</string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string>Year</string>
+            <string>Год</string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string>Identifier</string>
+            <string>Идентификатор</string>
            </property>
           </column>
          </widget>

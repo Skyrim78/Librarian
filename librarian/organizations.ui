@@ -16,7 +16,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Organizations</string>
+   <string>Организации</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_3">
@@ -43,7 +43,7 @@
          </font>
         </property>
         <property name="title">
-         <string>Columns</string>
+         <string>Колонки</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_2">
          <item row="0" column="0">
@@ -51,7 +51,7 @@
            <item>
             <widget class="QCheckBox" name="checkBox_name">
              <property name="text">
-              <string>Name</string>
+              <string>Название</string>
              </property>
              <property name="checked">
               <bool>true</bool>
@@ -61,14 +61,14 @@
            <item>
             <widget class="QCheckBox" name="checkBox_address">
              <property name="text">
-              <string>Address</string>
+              <string>Адрес</string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QCheckBox" name="checkBox_phone">
              <property name="text">
-              <string>Phone</string>
+              <string>Телефон</string>
              </property>
              <property name="checked">
               <bool>true</bool>
@@ -88,14 +88,14 @@
            <item>
             <widget class="QCheckBox" name="checkBox_face">
              <property name="text">
-              <string>Contact person</string>
+              <string>Контактное лицо</string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QCheckBox" name="checkBox_note">
              <property name="text">
-              <string>Note</string>
+              <string>Заметки</string>
              </property>
             </widget>
            </item>
@@ -148,7 +148,7 @@
                    <item>
                     <widget class="QLabel" name="label">
                      <property name="text">
-                      <string>Name:</string>
+                      <string>Название:</string>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -158,7 +158,7 @@
                    <item>
                     <widget class="QLabel" name="label_2">
                      <property name="text">
-                      <string>Address:</string>
+                      <string>Адрес:</string>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -168,7 +168,7 @@
                    <item>
                     <widget class="QLabel" name="label_3">
                      <property name="text">
-                      <string>Phone:</string>
+                      <string>Телефон:</string>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -178,7 +178,7 @@
                    <item>
                     <widget class="QLabel" name="label_5">
                      <property name="text">
-                      <string>Contact person:</string>
+                      <string>Контактное лицо:</string>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -188,7 +188,7 @@
                    <item>
                     <widget class="QLabel" name="label_6">
                      <property name="text">
-                      <string>Note:</string>
+                      <string>Заметки:</string>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -271,7 +271,7 @@
                     </size>
                    </property>
                    <property name="text">
-                    <string>Del</string>
+                    <string>Удалить</string>
                    </property>
                   </widget>
                  </item>
@@ -312,7 +312,7 @@
                     <string notr="true"/>
                    </property>
                    <property name="text">
-                    <string>Save</string>
+                    <string>Сохранить</string>
                    </property>
                   </widget>
                  </item>
@@ -346,7 +346,7 @@
                     <string notr="true"/>
                    </property>
                    <property name="text">
-                    <string>Close</string>
+                    <string>Закрыть</string>
                    </property>
                   </widget>
                  </item>
@@ -441,7 +441,7 @@
           </column>
           <column>
            <property name="text">
-            <string>Name</string>
+            <string>Название</string>
            </property>
            <property name="font">
             <font>
@@ -454,7 +454,7 @@
           </column>
           <column>
            <property name="text">
-            <string>Address</string>
+            <string>Адрес</string>
            </property>
            <property name="font">
             <font>
@@ -467,7 +467,7 @@
           </column>
           <column>
            <property name="text">
-            <string>Phone</string>
+            <string>Телефон</string>
            </property>
            <property name="font">
             <font>
@@ -493,7 +493,7 @@
           </column>
           <column>
            <property name="text">
-            <string>Contact person</string>
+            <string>Контактное лицо</string>
            </property>
            <property name="font">
             <font>
@@ -506,7 +506,7 @@
           </column>
           <column>
            <property name="text">
-            <string>Note</string>
+            <string>Заметки</string>
            </property>
            <property name="font">
             <font>
@@ -551,12 +551,12 @@
   </widget>
   <action name="actionAdd">
    <property name="text">
-    <string>New</string>
+    <string>Новый</string>
    </property>
   </action>
   <action name="actionClose">
    <property name="text">
-    <string>Close</string>
+    <string>Закрыть</string>
    </property>
   </action>
   <action name="actionHelp">

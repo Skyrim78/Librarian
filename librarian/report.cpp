@@ -35,6 +35,9 @@ reports::reports(int r, QWidget *parent):QDialog(parent){
 
     connect(ui.tableWidget_result, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(toDocsBooksReaders()));
 
+    connect(ui.pushButton_print, SIGNAL(clicked()), this, SLOT(printReport()));
+    connect(ui.pushButton_save, SIGNAL(clicked()), this, SLOT(saveReport()));
+
 }
 
 void reports::readSetting(){
@@ -247,4 +250,87 @@ void reports::toDocsBooksReaders(){
         readCard *rc = new readCard(list, curr, this);
         rc->exec();
     }
+}
+
+QString reports::makeDocReport(){
+    QString header;
+    if (report == 0){
+        header.append("Отчет о поступлении книг");
+    } else if (report == 1){
+        header.append("Отчет о выбытии книг");
+    } else if (report == 2){
+        header.append("Книги у читателей");
+    } else if (report == 3){
+        header.append("Книги в библиотеке");
+    } else if (report == 4){
+        header.append("Элекстронные книги в библиотеке");
+    } else if (report == 5){
+        header.append("Список задолжников");
+    }
+    QString header2;
+    QString header3;
+    if (report == 0 or report == 1){
+        if (ui.checkBox_period->isChecked()){
+            header2.append(QString("за период с %1 по %2")
+                           .arg(ui.dateEdit_form->date().toString("yyyy-MM-dd"))
+                                .arg(ui.dateEdit_to->date().toString("yyyy-MM-dd")));
+        }
+        if (ui.checkBox_org->isChecked()){
+            header3.append(QString("по организации: %1").arg(ui.comboBox_org->currentText()));
+        }
+    }
+
+    QString text;
+    text.append("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\"> "
+                              "<html><head> <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"> "
+                "<style type=\"text/css\"> p {border-style: solid; border-width: 2px; border-color: #c00; border-top: none; "
+                 "border-left: none; border-right: none; font-size: 12pt;} </style>"
+                "</head>"
+                               "<body>");
+    text.append(QString("<h3>%1</h3>").arg(header));
+    if (report == 0 or report == 1){
+        text.append(QString("<p><i>%1<br><b>%2</b></i></p>").arg(header2).arg(header3));
+    } else {
+        text.append("<p></p>");
+    }
+    text.append("<table cellpadding=10pt; border-top=2pt>" );
+    text.append("<tr><th>№</th>");
+
+    for (int col = 1; col < ui.tableWidget_result->columnCount(); col++){
+        text.append(QString("<th>%1</th>").arg(ui.tableWidget_result->horizontalHeaderItem(col)->text()));
+    }
+    text.append("</tr>");
+    for (int row = 0; row < ui.tableWidget_result->rowCount(); row++){
+        text.append("<tr>");
+        text.append(QString("<td>%1</td>").arg(row + 1));
+        for (int col = 1; col < ui.tableWidget_result->columnCount(); col++){
+            text.append(QString("<td>%1</td>").arg(ui.tableWidget_result->item(row, col)->text()));
+        }
+    }
+    text.append("</table></body></html>");
+
+    return text;
+}
+
+void reports::printReport(){
+    QPrinter printerA(QPrinterInfo::defaultPrinter());
+    printerA.setPageSize(QPrinter::A4);
+    printerA.setPageMargins(10.00, 5.00, 10.00, 15.00, QPrinter::Millimeter);
+    QPrintPreviewDialog preDialog(&printerA, this);
+    connect(&preDialog, SIGNAL(paintRequested(QPrinter*)), SLOT(previewReport(QPrinter*)));
+    preDialog.exec();
+}
+
+void reports::previewReport(QPrinter *p){
+    QTextDocument *textDoc = new QTextDocument();
+    textDoc->setHtml(makeDocReport());
+    textDoc->print(p);
+}
+
+void reports::saveReport(){
+    QString fileName(QFileDialog::getSaveFileName(this, tr("Save as..."), "/home", tr("HTML (*.html)")));
+    QFile out(fileName);
+    out.open(QIODevice::WriteOnly);
+    out.write(makeDocReport().toUtf8());
+    out.close();
 }

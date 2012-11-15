@@ -9,6 +9,7 @@
 #include <QPrinter>
 #include <QPrinterInfo>
 #include <QPrintPreviewDialog>
+#include <QFileDialog>
 
 search::search(QWidget *parent):QDialog(parent){
     ui.setupUi(this);
@@ -56,6 +57,8 @@ search::search(QWidget *parent):QDialog(parent){
     connect(ui.pushButton_print, SIGNAL(clicked()), SLOT(printResult()));
     connect(ui.toolButton_result, SIGNAL(clicked(bool)), ui.groupBox_result_title, SLOT(setVisible(bool)));
     connect(ui.checkBox_res_title, SIGNAL(clicked(bool)), ui.lineEdit_res_title, SLOT(setEnabled(bool)));
+    //
+    connect(ui.pushButton_save, SIGNAL(clicked()), this, SLOT(saveResult()));
     //
     connect(ui.tableWidget_result, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(toBook()));
 }
@@ -323,7 +326,10 @@ void search::delItemQuery(){
 QString search::makeDocResult(){
     QString text;
     text.append("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\"> "
-                              "<html><head> <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"></head>"
+                              "<html><head> <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">"
+                "<style type=\"text/css\">h3, p {border-style: solid; border-width: 2px; border-color: #c00; border-top: none; "
+                 "border-left: none; border-right: none;} p{font-size: 9pt;} </style>"
+                "</head>"
                                "<body>");
     if (ui.checkBox_res_title->isChecked()){
         text.append(QString("<h3>%1</h3>").arg(ui.lineEdit_res_title->text()));
@@ -420,5 +426,13 @@ void search::toBook(){
     }
     b_card *bc = new b_card(_l, cRow, false, this);
     bc->exec();
+}
+
+void search::saveResult(){
+    QString fileName(QFileDialog::getSaveFileName(this, tr("Save as..."), "/home", tr("HTML (*.html)")));
+    QFile out(fileName);
+    out.open(QIODevice::WriteOnly);
+    out.write(makeDocResult().toUtf8());
+    out.close();
 }
 

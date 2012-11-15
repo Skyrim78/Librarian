@@ -16,7 +16,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Owner</string>
+   <string>Владелец</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
@@ -26,7 +26,7 @@
        <item>
         <widget class="QLabel" name="label">
          <property name="text">
-          <string>Name:</string>
+          <string>Название организации:</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -43,7 +43,7 @@
        <item>
         <widget class="QLabel" name="label_2">
          <property name="text">
-          <string>Address:</string>
+          <string>Адрес:</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -60,7 +60,7 @@
        <item>
         <widget class="QLabel" name="label_3">
          <property name="text">
-          <string>Phone:</string>
+          <string>Телефон:</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -97,7 +97,7 @@
        <item>
         <widget class="QLabel" name="label_4">
          <property name="text">
-          <string>Face:</string>
+          <string>Представитель:</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -114,7 +114,7 @@
        <item>
         <widget class="QLabel" name="label_6">
          <property name="text">
-          <string>Note:</string>
+          <string>Заметки:</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -143,7 +143,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Clear</string>
+          <string>Очистить</string>
          </property>
          <property name="autoDefault">
           <bool>false</bool>
@@ -178,7 +178,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Save</string>
+          <string>Сохранить</string>
          </property>
          <property name="autoDefault">
           <bool>false</bool>
@@ -200,7 +200,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Close</string>
+          <string>Закрыть</string>
          </property>
          <property name="autoDefault">
           <bool>false</bool>

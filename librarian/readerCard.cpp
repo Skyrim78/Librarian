@@ -107,7 +107,7 @@ void readCard::openReader(){
                                   "from card_read, books, book_item, authors, book_auth "
                                   "where card_read.book_item = book_item.id and book_item.book = books.id and "
                                   "book_auth.book = books.id and book_auth.auth = authors.id and "
-                                  "card_read.date_e is null and card_read.read = \'%1\' ").arg(list.at(curr)));
+                                  "card_read.date_e is null and card_read.read = \'%1\' group by card_read.id ").arg(list.at(curr)));
         int row = 0;
         while (actBook.next()){
             ui.tableWidget_active->insertRow(row);
@@ -129,7 +129,7 @@ void readCard::openReader(){
                                   "from card_read, books, book_item, authors, book_auth "
                                   "where card_read.book_item = book_item.id and book_item.book = books.id and "
                                   "book_auth.book = books.id and book_auth.auth = authors.id and "
-                                  "card_read.date_e is not null and card_read.read = \'%1\' ").arg(list.at(curr)));
+                                  "card_read.date_e is not null and card_read.read = \'%1\' group by card_read.id ").arg(list.at(curr)));
         int row2 = 0;
         while (hisBook.next()){
             ui.tableWidget_history->insertRow(row2);

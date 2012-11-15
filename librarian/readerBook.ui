@@ -16,7 +16,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Lending/receiving book</string>
+   <string>Прием / Выдача книг</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0">
@@ -24,7 +24,7 @@
      <item>
       <widget class="QGroupBox" name="groupBox_search">
        <property name="title">
-        <string>Search</string>
+        <string>Поиск</string>
        </property>
        <layout class="QGridLayout" name="gridLayout">
         <item row="0" column="0">
@@ -47,7 +47,7 @@
             <item>
              <widget class="QRadioButton" name="radioButton_name">
               <property name="text">
-               <string>Title of books</string>
+               <string>Название книги</string>
               </property>
               <property name="checked">
                <bool>true</bool>
@@ -64,7 +64,7 @@
             <item>
              <widget class="QRadioButton" name="radioButton_identifier">
               <property name="text">
-               <string>Identifier</string>
+               <string>Идентификатор</string>
               </property>
              </widget>
             </item>
@@ -126,7 +126,7 @@
             </column>
             <column>
              <property name="text">
-              <string>Title</string>
+              <string>Название</string>
              </property>
              <property name="font">
               <font>
@@ -136,7 +136,7 @@
             </column>
             <column>
              <property name="text">
-              <string>Author</string>
+              <string>Автор</string>
              </property>
              <property name="font">
               <font>
@@ -146,7 +146,7 @@
             </column>
             <column>
              <property name="text">
-              <string>Identifier</string>
+              <string>Идентификатор</string>
              </property>
              <property name="font">
               <font>
@@ -179,7 +179,7 @@
        <item>
         <widget class="QLabel" name="label">
          <property name="text">
-          <string>Title:</string>
+          <string>Название:</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -196,7 +196,7 @@
        <item>
         <widget class="QLabel" name="label_4">
          <property name="text">
-          <string>Identifier:</string>
+          <string>Идентификатор:</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -241,7 +241,7 @@
          <item>
           <widget class="QCheckBox" name="checkBox_take">
            <property name="text">
-            <string>Outstanding book</string>
+            <string>Выдано</string>
            </property>
           </widget>
          </item>
@@ -250,7 +250,7 @@
            <item>
             <widget class="QLabel" name="label_2">
              <property name="text">
-              <string>Date:</string>
+              <string>Дата выдачи:</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -273,7 +273,7 @@
          <item>
           <widget class="QCheckBox" name="checkBox_get">
            <property name="text">
-            <string>Get the book</string>
+            <string>Получено</string>
            </property>
           </widget>
          </item>
@@ -282,7 +282,7 @@
            <item>
             <widget class="QLabel" name="label_3">
              <property name="text">
-              <string>Date:</string>
+              <string>Дата получения:</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -332,7 +332,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Del</string>
+          <string>Удалить</string>
          </property>
          <property name="flat">
           <bool>false</bool>
@@ -443,7 +443,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Save</string>
+          <string>Сохранить</string>
          </property>
         </widget>
        </item>
@@ -462,7 +462,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Close</string>
+          <string>Закрыть</string>
          </property>
         </widget>
        </item>
