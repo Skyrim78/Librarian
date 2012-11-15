@@ -55,6 +55,7 @@ b_card::b_card(QList<int> _list, int _item, bool _card, QWidget *parent):QDialog
 
     connect(ui.pushButton_save, SIGNAL(clicked()), this, SLOT(saveCard()));
     connect(ui.tableWidget_identifiers, SIGNAL(clicked(QModelIndex)), this, SLOT(lookHistoryBook()));
+    connect(ui.pushButton_del, SIGNAL(clicked()), this, SLOT(deleteCard()));
 }
 
 void b_card::readSetting(){
@@ -125,6 +126,7 @@ void b_card::updateCard(){
         ui.lineEdit_file->clear();
         ui.label_photo->clear();
         ui.lineEdit_file_photo->clear();
+        ui.lineEdit_place->clear();
         ui.pushButton_del->setEnabled(false);
     } else if (card == false){
         QSqlQuery book(QString("select books.title, books.isbn, sections.name, category.name, publish.name, "
@@ -156,6 +158,11 @@ void b_card::updateCard(){
         updateAuthors(list.at(item));
         //info identifiers
         updateIdentifiers();
+        if (ui.tableWidget_identifiers->rowCount() > 0){
+            ui.pushButton_del->setEnabled(false);
+        } else {
+            ui.pushButton_del->setEnabled(true);
+        }
     }
 
     if (item == 0){
@@ -377,11 +384,10 @@ void b_card::saveCard(){
 }
 
 void b_card::deleteCard(){
+    QSqlQuery delAuth(QString("delete from book_auth where book_auth.book = \'%1\'").arg(list.at(item)));
+    delAuth.exec();
     QSqlQuery qClose(QString("delete from books where books.id = \'%1\' ").arg(list.at(item)));
     qClose.exec();
-    delAuthors();
-    delPhoto();
-    delEBook();
     close();
 }
 

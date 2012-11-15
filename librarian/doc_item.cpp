@@ -162,6 +162,31 @@ void docItem::openItem(){
         ui.lineEdit_identifier->setText(query.value(2).toString());
     }
     viewItems();
+
+    //test for deleting
+    if (vid == 1){
+        QSqlQuery testRead(QString("select Count(card_read.id) "
+                                   "from card_read, book_item "
+                                   "where card_read.book_item = book_item.id and book_item.identifier = \'%1\'")
+                           .arg(ui.lineEdit_identifier->text()));
+        testRead.next();
+        QSqlQuery testDoc(QString("select Count(doc_item.id) "
+                                  "from doc_item, docs, book_item "
+                                  "where doc_item.book_item = book_item.id and doc_item.doc = docs.id and docs.vid = 2 "
+                                  "and book_item.identifier = \'%1\'")
+                          .arg(ui.lineEdit_identifier->text()));
+        testDoc.next();
+        if (testRead.value(0).toInt() == 0 and testDoc.value(0).toInt() == 0){
+            ui.pushButton_del->setEnabled(true);
+        } else if (testRead.value(0).toInt() > 0 or testDoc.value(0).toInt() > 0){
+            ui.pushButton_del->setEnabled(false);
+        }
+    } else if (vid == 2){
+        ui.pushButton_del->setEnabled(true);
+    }
+
+    //
+
     if (list.size() == 0){
         ui.pushButton_toFirst->setEnabled(false);
         ui.pushButton_toLast->setEnabled(false);

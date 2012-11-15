@@ -5,6 +5,11 @@
 #include <QtSql/QtSql>
 #include <QtXml/QtXml>
 #include <QMessageBox>
+#include <QTextDocument>
+#include <QPrinter>
+#include <QPrinterInfo>
+#include <QPrintPreviewDialog>
+#include <QFileDialog>
 
 class docCard:public QDialog{
     Q_OBJECT
@@ -32,6 +37,11 @@ private slots:
 
     void addItem();
     void openItem();
+
+    void saveToFile();
+    QString makePaperDoc();
+    void printDoc();
+    void previewDoc(QPrinter *p);
 };
 
 

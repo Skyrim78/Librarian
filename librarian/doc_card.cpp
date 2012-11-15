@@ -1,6 +1,9 @@
 #include "doc_card.h"
 #include "doc_item.h"
 
+#include <QMenu>
+#include <QAction>
+
 docCard::docCard(QList<int> _list, int _curr, QWidget *parent):QDialog(parent){
     ui.setupUi(this);
     list = _list;
@@ -35,6 +38,9 @@ docCard::docCard(QList<int> _list, int _curr, QWidget *parent):QDialog(parent){
     connect(ui.pushButton_toLast, SIGNAL(clicked()), this, SLOT(toLast()));
     connect(ui.pushButton_toNext, SIGNAL(clicked()),this, SLOT(toNext()));
     connect(ui.pushButton_toPrev, SIGNAL(clicked()), this, SLOT(toPrev()));
+
+    connect(ui.pushButton_print, SIGNAL(clicked()), this, SLOT(printDoc()));
+    connect(ui.pushButton_file, SIGNAL(clicked()), this, SLOT(saveToFile()));
 }
 
 void docCard::readSetting(){
@@ -148,6 +154,11 @@ void docCard::readDoc(){
     }
     //total
     ui.spinBox_total->setValue(ui.tableWidget_book->rowCount());
+    if (ui.spinBox_total->value() > 0){
+        ui.pushButton_del->setEnabled(false);
+    } else {
+        ui.pushButton_del->setEnabled(true);
+    }
 
     if (list.size() == 0){
         ui.pushButton_toFirst->setEnabled(false);
@@ -239,5 +250,67 @@ void docCard::toNext(){
 void docCard::toLast(){
     curr = list.size() - 1;
     readDoc();
+}
+
+
+QString docCard::makePaperDoc(){
+    QString text;
+    text.append("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\"> "
+                              "<html><head> <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"> "
+                              //"<style type=\"text/css\"> p {border-style: solid; border-width: 2px; border-color: #c00; border-top: none; "
+                             //"border-left: none; border-right: none; font-size: 12pt;} </style>"
+                             "</head>"
+                             "<body>");
+    text.append("<table>");
+    text.append(QString("<tr><td><td>"))
+    /*
+    text.append(QString("<h3>%1</h3>").arg(header));
+    if (report == 0 or report == 1){
+        text.append(QString("<p><i>%1<br><b>%2</b></i></p>").arg(header2).arg(header3));
+    } else {
+        text.append("<p></p>");
+    }
+    text.append("<table cellpadding=10pt; border-top=2pt>" );
+    text.append("<tr><th>№</th>");
+
+    for (int col = 1; col < ui.tableWidget_result->columnCount(); col++){
+        text.append(QString("<th>%1</th>").arg(ui.tableWidget_result->horizontalHeaderItem(col)->text()));
+    }
+    text.append("</tr>");
+    for (int row = 0; row < ui.tableWidget_result->rowCount(); row++){
+        text.append("<tr>");
+        text.append(QString("<td>%1</td>").arg(row + 1));
+        for (int col = 1; col < ui.tableWidget_result->columnCount(); col++){
+            text.append(QString("<td>%1</td>").arg(ui.tableWidget_result->item(row, col)->text()));
+        }
+    }
+    */
+    text.append("</table></body></html>");
+
+
+    return text;
+}
+
+void docCard::printDoc(){
+    QPrinter printerA(QPrinterInfo::defaultPrinter());
+    printerA.setPageSize(QPrinter::A4);
+    printerA.setPageMargins(10.00, 5.00, 10.00, 15.00, QPrinter::Millimeter);
+    QPrintPreviewDialog preDialog(&printerA, this);
+    connect(&preDialog, SIGNAL(paintRequested(QPrinter*)), SLOT(previewDoc(QPrinter*)));
+    preDialog.exec();
+}
+
+void docCard::previewDoc(QPrinter *p){
+    QTextDocument *textDoc = new QTextDocument();
+    textDoc->setHtml(makePaperDoc());
+    textDoc->print(p);
+}
+
+void docCard::saveToFile(){
+    QString fileName(QFileDialog::getSaveFileName(this, tr("Сохранить как..."), "/home", tr("HTML (*.html)")));
+    QFile out(fileName);
+    out.open(QIODevice::WriteOnly);
+    out.write(makePaperDoc().toUtf8());
+    out.close();
 }
 

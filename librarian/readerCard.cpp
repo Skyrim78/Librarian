@@ -141,6 +141,11 @@ void readCard::openReader(){
         }
         ui.tableWidget_history->resizeColumnsToContents();
         ui.tableWidget_history->horizontalHeader()->setStretchLastSection(true);
+        if (ui.tableWidget_active->rowCount() > 0 or ui.tableWidget_history->rowCount() > 0){
+            ui.pushButton_del->setEnabled(false);
+        } else {
+            ui.pushButton_del->setEnabled(true);
+        }
     }
     if (list.size() == 0){
         ui.pushButton_toFirst->setEnabled(false);

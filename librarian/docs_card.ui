@@ -197,6 +197,20 @@
          </property>
         </spacer>
        </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_print">
+         <property name="text">
+          <string>Печать</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_file">
+         <property name="text">
+          <string>в Файл</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </item>
      <item>

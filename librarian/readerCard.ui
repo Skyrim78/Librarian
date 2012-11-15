@@ -198,6 +198,9 @@
               <property name="text">
                <string>Удалить</string>
               </property>
+              <property name="autoDefault">
+               <bool>false</bool>
+              </property>
              </widget>
             </item>
             <item>
@@ -216,6 +219,9 @@
               </property>
               <property name="text">
                <string>&lt;&lt;</string>
+              </property>
+              <property name="autoDefault">
+               <bool>false</bool>
               </property>
              </widget>
             </item>
@@ -236,6 +242,9 @@
               <property name="text">
                <string>&lt;</string>
               </property>
+              <property name="autoDefault">
+               <bool>false</bool>
+              </property>
              </widget>
             </item>
             <item>
@@ -255,6 +264,9 @@
               <property name="text">
                <string>&gt;</string>
               </property>
+              <property name="autoDefault">
+               <bool>false</bool>
+              </property>
              </widget>
             </item>
             <item>
@@ -273,6 +285,9 @@
               </property>
               <property name="text">
                <string>&gt;&gt;</string>
+              </property>
+              <property name="autoDefault">
+               <bool>false</bool>
               </property>
              </widget>
             </item>
@@ -306,6 +321,9 @@
               <property name="text">
                <string>Сохранить</string>
               </property>
+              <property name="autoDefault">
+               <bool>false</bool>
+              </property>
              </widget>
             </item>
             <item>
@@ -324,6 +342,9 @@
               </property>
               <property name="text">
                <string>Закрыть</string>
+              </property>
+              <property name="autoDefault">
+               <bool>false</bool>
               </property>
              </widget>
             </item>
@@ -419,6 +440,9 @@
                </property>
                <property name="text">
                 <string>Выдать книгу</string>
+               </property>
+               <property name="autoDefault">
+                <bool>true</bool>
                </property>
               </widget>
              </item>
